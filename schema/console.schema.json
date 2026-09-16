@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/r36s-studio-catalogue/r36s-studio-catalogue/schema/console.schema.json",
+  "title": "Fiche console R36S Studio",
+  "description": "Schéma d'une fiche consoles/<id>.json -- premier brouillon, voir r36s-studio-cloud/README.md, \"Décisions techniques\", point 1, pour le contexte et les décisions non encore formalisées ici.",
+  "type": "object",
+  "required": ["id", "identite", "materiel", "os", "options", "statut", "signalements"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Slug unique, sert de nom de fichier (consoles/<id>.json).",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "identite": {
+      "type": "object",
+      "required": ["nom", "fabricant", "alias"],
+      "additionalProperties": false,
+      "properties": {
+        "nom": { "type": "string", "minLength": 1 },
+        "fabricant": { "type": "string", "minLength": 1 },
+        "alias": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Jamais utilisés pour la correspondance catalogue tant que statut != \"verifie\"."
+        }
+      }
+    },
+    "materiel": {
+      "type": "object",
+      "required": ["soc", "architecture"],
+      "additionalProperties": false,
+      "properties": {
+        "soc": { "type": "string" },
+        "architecture": { "enum": ["MIPS", "ARM64", "ARM32", "x86", "inconnu"] },
+        "architecture_source_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "os": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" }
+      }
+    },
+    "detection_sd": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "signatures": {
+          "type": "array",
+          "description": "Plusieurs entrées = alternatives (OU) -- ex. carte d'origine vs firmware déjà installé -- jamais un ET.",
+          "items": {
+            "type": "object",
+            "required": ["partition_index", "systeme_fichiers", "fichiers_reperes"],
+            "additionalProperties": false,
+            "properties": {
+              "partition_index": { "type": "integer", "minimum": 0 },
+              "etiquette": {
+                "type": ["string", "null"],
+                "description": "Souvent absente sur les vraies cartes, voir r36s-studio/CLAUDE.md §4.4."
+              },
+              "systeme_fichiers": { "type": "string" },
+              "fichiers_reperes": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1
+              },
+              "description": {
+                "type": "string",
+                "description": "Optionnel -- utile dès qu'une console a plusieurs signatures à distinguer."
+              }
+            }
+          }
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "required": ["frontend", "systeme_cfw", "firmware_origine", "mises_a_jour"],
+      "additionalProperties": false,
+      "properties": {
+        "frontend": { "$ref": "#/$defs/optionEntries" },
+        "systeme_cfw": { "$ref": "#/$defs/optionEntries" },
+        "firmware_origine": { "$ref": "#/$defs/optionEntries" },
+        "mises_a_jour": { "$ref": "#/$defs/optionEntries" }
+      }
+    },
+    "incompatibles": {
+      "type": "array",
+      "description": "Firmwares/CFW confirmés incompatibles (pas seulement \"non testés\") -- toujours vérifié.",
+      "items": {
+        "type": "object",
+        "required": ["nom", "raison"],
+        "additionalProperties": false,
+        "properties": {
+          "nom": { "type": "string", "minLength": 1 },
+          "raison": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "liens_officiels": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "licences": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "restriction_commerciale": {
+      "type": "boolean",
+      "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée (fiche ou au moins une option)."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "type": { "enum": ["web", "handhelds_wiki", "github"] }
+        }
+      }
+    },
+    "recherche_web": {
+      "type": "boolean",
+      "description": "Ajouté par le worker uniquement pour une fiche trouvée par IA -- absent pour une fiche vérifiée manuellement."
+    },
+    "sources_collectees": {
+      "type": "boolean",
+      "description": "Vrai uniquement en mode collecte de sources -- absent sinon."
+    },
+    "statut": { "enum": ["verifie", "non_verifie"] },
+    "date_verification": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "signalements": { "type": "integer", "minimum": 0 }
+  },
+  "$defs": {
+    "optionEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["nom", "description", "source_url"],
+        "additionalProperties": false,
+        "properties": {
+          "nom": { "type": "string" },
+          "description": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "licence": { "type": "string" },
+          "licence_a_verifier": {
+            "type": "boolean",
+            "description": "Absent quand faux -- présent (true) seulement quand la licence exige une vérification humaine."
+          },
+          "restriction_commerciale": {
+            "type": "boolean",
+            "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée dans l'extrait citant cette option."
+          },
+          "source_url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "sf3000hd",
+  "identite": {
+    "nom": "SF3000HD",
+    "fabricant": "Data Frog",
+    "alias": []
+  },
+  "materiel": {
+    "soc": "HiChip C3100",
+    "architecture": "MIPS"
+  },
+  "os": {
+    "type": "proprietaire (H.OS / iCube / cubegm)"
+  },
+  "detection_sd": {
+    "signatures": [
+      {
+        "partition_index": 0,
+        "etiquette": null,
+        "systeme_fichiers": "fat32",
+        "fichiers_reperes": ["cubegm", "roms"],
+        "description": "Carte SF3000HD d'origine (firmware H.OS/iCube/cubegm)"
+      },
+      {
+        "partition_index": 0,
+        "etiquette": null,
+        "systeme_fichiers": "fat32",
+        "fichiers_reperes": ["frogui"],
+        "description": "TreeFrog UI déjà installé (dossier frogui/ à la racine)"
+      },
+      {
+        "partition_index": 0,
+        "etiquette": null,
+        "systeme_fichiers": "fat32",
+        "fichiers_reperes": ["cubegm/zhijack.sh"],
+        "description": "TreeFrog UI déjà installé (variante : cubegm/zhijack.sh présent)"
+      }
+    ]
+  },
+  "options": {
+    "frontend": [
+      {
+        "nom": "TreeFrog UI",
+        "description": "Interface/frontend personnalisé pour SF3000HD et consoles apparentées.",
+        "url": "https://github.com/tzubertowski/TreeFrogUI",
+        "licence": "CC-BY-NC-SA-4.0",
+        "restriction_commerciale": true,
+        "source_url": "https://github.com/tzubertowski/TreeFrogUI"
+      }
+    ],
+    "systeme_cfw": [],
+    "firmware_origine": [
+      {
+        "nom": "Sauvegarde du firmware d'origine",
+        "description": "Procédure de sauvegarde variable selon le modèle exact de carte -- voir install.md du dépôt TreeFrog UI.",
+        "url": "https://github.com/tzubertowski/TreeFrogUI/blob/main/install.md",
+        "source_url": "https://github.com/tzubertowski/TreeFrogUI/blob/main/install.md"
+      }
+    ],
+    "mises_a_jour": [
+      {
+        "nom": "update.zip officiel TreeFrog UI",
+        "description": "Copier update.zip à la racine de la carte SD pour mettre à jour TreeFrog UI.",
+        "source_url": "https://github.com/tzubertowski/TreeFrogUI"
+      }
+    ]
+  },
+  "incompatibles": [
+    { "nom": "ArkOS", "raison": "ARM uniquement, flasher une image ARM corrompt la carte" },
+    { "nom": "dArkOS", "raison": "ARM uniquement, flasher une image ARM corrompt la carte" },
+    { "nom": "JELOS", "raison": "ARM uniquement, flasher une image ARM corrompt la carte" },
+    { "nom": "EmuELEC", "raison": "ARM uniquement, flasher une image ARM corrompt la carte" },
+    { "nom": "PortMaster", "raison": "ARM uniquement, flasher une image ARM corrompt la carte" }
+  ],
+  "liens_officiels": [],
+  "licences": ["CC-BY-NC-SA-4.0"],
+  "restriction_commerciale": true,
+  "sources": [
+    { "url": "https://github.com/tzubertowski/TreeFrogUI", "type": "github" },
+    { "url": "https://github.com/tzubertowski/TreeFrogUI/blob/main/install.md", "type": "github" }
+  ],
+  "statut": "verifie",
+  "date_verification": "2026-09-17",
+  "signalements": 0
+}

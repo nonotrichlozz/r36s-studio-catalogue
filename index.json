@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "consoles": [
+    {
+      "id": "sf3000hd",
+      "nom": "SF3000HD",
+      "alias": [],
+      "statut": "verifie"
+    }
+  ]
+}
