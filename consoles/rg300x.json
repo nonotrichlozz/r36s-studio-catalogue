@@ -1,0 +1,46 @@
+{
+  "id": "rg300x",
+  "identite": {
+    "nom": "RG300X",
+    "fabricant": "Anbernic",
+    "alias": []
+  },
+  "materiel": {
+    "soc": "inconnu",
+    "architecture": "MIPS"
+  },
+  "os": {
+    "type": "Linux"
+  },
+  "options": {
+    "frontend": [],
+    "systeme_cfw": [
+      {
+        "nom": "ROGUE",
+        "description": "ROGUE custom firmware for RG300X",
+        "licence": "non_detectee",
+        "source_url": "https://github.com/Ninoh-FOX/RG300X-ROGUE-CFW",
+        "licence_a_verifier": true
+      }
+    ],
+    "firmware_origine": [],
+    "mises_a_jour": []
+  },
+  "liens_officiels": [],
+  "licences": [],
+  "sources": [
+    {
+      "url": "https://github.com/Ninoh-FOX/RG300X-ROGUE-CFW",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/weimingtom/onscripter-jh-rg300x",
+      "type": "github"
+    }
+  ],
+  "recherche_web": false,
+  "sources_collectees": true,
+  "statut": "non_verifie",
+  "signalements": 0,
+  "date_verification": null
+}
