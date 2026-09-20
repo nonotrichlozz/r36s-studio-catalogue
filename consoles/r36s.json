@@ -1,0 +1,82 @@
+{
+  "id": "r36s",
+  "identite": {
+    "nom": "R36S",
+    "fabricant": "inconnu",
+    "alias": [
+      "RetroBox Console",
+      "Game Station",
+      "Game Console"
+    ]
+  },
+  "materiel": {
+    "soc": "Rockchip RK3326",
+    "architecture": "ARM64"
+  },
+  "os": {
+    "type": "Linux"
+  },
+  "options": {
+    "frontend": [
+      {
+        "nom": "EmulationStation",
+        "description": "It is possible to setup EmulationStation to support our native games.",
+        "licence": "non_detectee",
+        "source_url": "https://github.com/dov/r36s-programming",
+        "licence_a_verifier": true
+      }
+    ],
+    "systeme_cfw": [
+      {
+        "nom": "ArkOS",
+        "description": "Ubuntu Linux based ArkOS Open Source operating system preinstalled.",
+        "licence": "non_detectee",
+        "source_url": "https://github.com/dov/r36s-programming",
+        "licence_a_verifier": true,
+        "url": "https://github.com/christianhaitian/arkos/wiki#download-links"
+      },
+      {
+        "nom": "AmberELEC",
+        "description": "AmberELEC and ArkOS: rk3326-r35s-linux.dtb is the file with the working FN Button",
+        "licence": "CC-BY-NC-4.0",
+        "source_url": "https://github.com/AeolusUX/R36S-DTB",
+        "licence_a_verifier": true,
+        "restriction_commerciale": true,
+        "url": "https://github.com/AmberELEC/AmberELEC/releases"
+      },
+      {
+        "nom": "dArkOS",
+        "description": "Customized dArkOS firmware for selected R36S devices and Clones",
+        "licence": "non_detectee",
+        "source_url": "https://github.com/southoz/dArkOSRE-R36",
+        "licence_a_verifier": true
+      }
+    ],
+    "firmware_origine": [],
+    "mises_a_jour": []
+  },
+  "liens_officiels": [],
+  "licences": [
+    "CC-BY-NC-4.0"
+  ],
+  "restriction_commerciale": true,
+  "sources": [
+    {
+      "url": "https://github.com/AeolusUX/R36S-DTB",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/dov/r36s-programming",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/southoz/dArkOSRE-R36",
+      "type": "github"
+    }
+  ],
+  "recherche_web": false,
+  "sources_collectees": true,
+  "statut": "non_verifie",
+  "signalements": 0,
+  "date_verification": null
+}
