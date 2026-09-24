@@ -1,0 +1,60 @@
+{
+  "id": "sf3000",
+  "identite": {
+    "nom": "SF3000",
+    "fabricant": "inconnu",
+    "alias": []
+  },
+  "materiel": {
+    "soc": "inconnu",
+    "architecture": "MIPS"
+  },
+  "os": {
+    "type": "Linux"
+  },
+  "options": {
+    "frontend": [
+      {
+        "nom": "TreeFrog UI",
+        "description": "TreeFrog UI is a frontend replacement for DataFrog R36SX, R36HD, SF3000, GB350, SF3500, SF3000HD.",
+        "licence": "CC-BY-NC-SA-4.0",
+        "source_url": "https://github.com/tzubertowski/TreeFrogUI",
+        "licence_a_verifier": true,
+        "restriction_commerciale": true,
+        "url": "https://github.com/tzubertowski/TreeFrogUI"
+      },
+      {
+        "nom": "mini_rkgame",
+        "description": "A very basic libretro frontend for the sf3000/gb350",
+        "licence": "MIT",
+        "source_url": "https://github.com/700zx1/mini_rkgame",
+        "licence_a_verifier": true,
+        "url": "https://github.com/700zx1/mini_rkgame"
+      }
+    ],
+    "systeme_cfw": [],
+    "firmware_origine": [],
+    "mises_a_jour": []
+  },
+  "liens_officiels": [],
+  "licences": [],
+  "sources": [
+    {
+      "url": "https://github.com/tzubertowski/TreeFrogUI",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/goph-R/SF3000-RE",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/700zx1/mini_rkgame",
+      "type": "github"
+    }
+  ],
+  "recherche_web": false,
+  "sources_collectees": true,
+  "statut": "non_verifie",
+  "signalements": 0,
+  "date_verification": null
+}
