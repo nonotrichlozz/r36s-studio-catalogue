@@ -100,6 +100,37 @@
         }
       }
     },
+    "symptomes": {
+      "type": "array",
+      "description": "Dépannage : ce que l'utilisateur voit à l'écran (pas la configuration correcte), ses causes possibles et comment trancher. Optionnel -- jamais produit par la recherche IA (absent de SCHEMA_FIELDS côté Worker), seulement sur une fiche relue à la main.",
+      "items": {
+        "type": "object",
+        "required": ["symptome", "causes_possibles", "verification", "verifie_sur_materiel"],
+        "additionalProperties": false,
+        "properties": {
+          "symptome": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Ce qu'on voit, dans les mots de l'utilisateur -- jamais le nom de la cause."
+          },
+          "causes_possibles": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "minItems": 1,
+            "description": "De la plus probable à la moins probable. Quand verifie_sur_materiel est vrai, la cause confirmée sur la console est toujours la première ; les suivantes restent des pistes plausibles et documentées."
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Comment savoir laquelle des causes est la bonne, sur la carte ou la console."
+          },
+          "verifie_sur_materiel": {
+            "type": "boolean",
+            "description": "Vrai seulement si le symptôme ET la cause retenue ont été constatés sur une vraie console -- faux pour une cause déduite de la documentation ou jamais confirmée après correction."
+          }
+        }
+      }
+    },
     "liens_officiels": {
       "type": "array",
       "items": { "type": "string", "format": "uri" }
