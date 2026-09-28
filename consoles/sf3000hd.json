@@ -17,7 +17,7 @@
       {
         "partition_index": 0,
         "etiquette": null,
-        "systeme_fichiers": "fat32",
+        "systeme_fichiers": "exfat",
         "fichiers_reperes": [
           "cubegm",
           "roms"
