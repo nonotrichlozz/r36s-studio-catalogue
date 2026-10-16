@@ -1,11 +1,19 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "consoles": [
     {
       "id": "sf3000hd",
       "nom": "SF3000HD",
       "alias": [],
       "statut": "verifie"
+    },
+    {
+      "id": "anbernic-rg-rotate",
+      "nom": "RG Rotate",
+      "alias": [
+        "Anbernic RG Rotate"
+      ],
+      "statut": "non_verifie"
     }
   ]
 }
