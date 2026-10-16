@@ -21,8 +21,8 @@
     "systeme_cfw": [
       {
         "nom": "KNULLI",
-        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. Image dédiée RG40XX V (fichier .7z en plusieurs parties à décompresser avant flash).",
-        "url": "https://knulli.org/devices/anbernic/rg40xx-v/",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. Version SCARAB (20260511) : image dédiée knulli-h700-rg40xx-v-scarab-20260511.img.gz, flashable directement.",
+        "url": "https://github.com/knulli-cfw/knulli-linux/releases/tag/20260511",
         "licence": "Batocera (inclut des composants à usage non commercial)",
         "restriction_commerciale": true,
         "source_url": "https://github.com/knulli-cfw/knulli-linux"
@@ -111,6 +111,6 @@
     }
   ],
   "statut": "verifie",
-  "date_verification": "2026-10-16",
+  "date_verification": "2026-10-17",
   "signalements": 0
 }
