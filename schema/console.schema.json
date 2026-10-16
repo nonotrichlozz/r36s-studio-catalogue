@@ -4,7 +4,15 @@
   "title": "Fiche console R36S Studio",
   "description": "Schéma d'une fiche consoles/<id>.json -- premier brouillon, voir r36s-studio-cloud/README.md, \"Décisions techniques\", point 1, pour le contexte et les décisions non encore formalisées ici.",
   "type": "object",
-  "required": ["id", "identite", "materiel", "os", "options", "statut", "signalements"],
+  "required": [
+    "id",
+    "identite",
+    "materiel",
+    "os",
+    "options",
+    "statut",
+    "signalements"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -14,34 +22,66 @@
     },
     "identite": {
       "type": "object",
-      "required": ["nom", "fabricant", "alias"],
+      "required": [
+        "nom",
+        "fabricant",
+        "alias"
+      ],
       "additionalProperties": false,
       "properties": {
-        "nom": { "type": "string", "minLength": 1 },
-        "fabricant": { "type": "string", "minLength": 1 },
+        "nom": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fabricant": {
+          "type": "string",
+          "minLength": 1
+        },
         "alias": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "description": "Jamais utilisés pour la correspondance catalogue tant que statut != \"verifie\"."
         }
       }
     },
     "materiel": {
       "type": "object",
-      "required": ["soc", "architecture"],
+      "required": [
+        "soc",
+        "architecture"
+      ],
       "additionalProperties": false,
       "properties": {
-        "soc": { "type": "string" },
-        "architecture": { "enum": ["MIPS", "ARM64", "ARM32", "x86", "inconnu"] },
-        "architecture_source_url": { "type": "string", "format": "uri" }
+        "soc": {
+          "type": "string"
+        },
+        "architecture": {
+          "enum": [
+            "MIPS",
+            "ARM64",
+            "ARM32",
+            "x86",
+            "inconnu"
+          ]
+        },
+        "architecture_source_url": {
+          "type": "string",
+          "format": "uri"
+        }
       }
     },
     "os": {
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "additionalProperties": false,
       "properties": {
-        "type": { "type": "string" }
+        "type": {
+          "type": "string"
+        }
       }
     },
     "detection_sd": {
@@ -53,18 +93,32 @@
           "description": "Plusieurs entrées = alternatives (OU) -- ex. carte d'origine vs firmware déjà installé -- jamais un ET.",
           "items": {
             "type": "object",
-            "required": ["partition_index", "systeme_fichiers", "fichiers_reperes"],
+            "required": [
+              "partition_index",
+              "systeme_fichiers",
+              "fichiers_reperes"
+            ],
             "additionalProperties": false,
             "properties": {
-              "partition_index": { "type": "integer", "minimum": 0 },
+              "partition_index": {
+                "type": "integer",
+                "minimum": 0
+              },
               "etiquette": {
-                "type": ["string", "null"],
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "Souvent absente sur les vraies cartes, voir r36s-studio/CLAUDE.md §4.4."
               },
-              "systeme_fichiers": { "type": "string" },
+              "systeme_fichiers": {
+                "type": "string"
+              },
               "fichiers_reperes": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "minItems": 1
               },
               "description": {
@@ -78,13 +132,26 @@
     },
     "options": {
       "type": "object",
-      "required": ["frontend", "systeme_cfw", "firmware_origine", "mises_a_jour"],
+      "required": [
+        "frontend",
+        "systeme_cfw",
+        "firmware_origine",
+        "mises_a_jour"
+      ],
       "additionalProperties": false,
       "properties": {
-        "frontend": { "$ref": "#/$defs/optionEntries" },
-        "systeme_cfw": { "$ref": "#/$defs/optionEntries" },
-        "firmware_origine": { "$ref": "#/$defs/optionEntries" },
-        "mises_a_jour": { "$ref": "#/$defs/optionEntries" }
+        "frontend": {
+          "$ref": "#/$defs/optionEntries"
+        },
+        "systeme_cfw": {
+          "$ref": "#/$defs/optionEntries"
+        },
+        "firmware_origine": {
+          "$ref": "#/$defs/optionEntries"
+        },
+        "mises_a_jour": {
+          "$ref": "#/$defs/optionEntries"
+        }
       }
     },
     "incompatibles": {
@@ -92,21 +159,35 @@
       "description": "Firmwares/CFW confirmés incompatibles (pas seulement \"non testés\") -- toujours vérifié.",
       "items": {
         "type": "object",
-        "required": ["nom", "raison"],
+        "required": [
+          "nom",
+          "raison"
+        ],
         "additionalProperties": false,
         "properties": {
-          "nom": { "type": "string", "minLength": 1 },
-          "raison": { "type": "string", "minLength": 1 }
+          "nom": {
+            "type": "string",
+            "minLength": 1
+          },
+          "raison": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
     "liens_officiels": {
       "type": "array",
-      "items": { "type": "string", "format": "uri" }
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
     },
     "licences": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "restriction_commerciale": {
       "type": "boolean",
@@ -116,11 +197,23 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["url", "type"],
+        "required": [
+          "url",
+          "type"
+        ],
         "additionalProperties": false,
         "properties": {
-          "url": { "type": "string", "format": "uri" },
-          "type": { "enum": ["web", "handhelds_wiki", "github"] }
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "enum": [
+              "web",
+              "handhelds_wiki",
+              "github"
+            ]
+          }
         }
       }
     },
@@ -132,25 +225,56 @@
       "type": "boolean",
       "description": "Vrai uniquement en mode collecte de sources -- absent sinon."
     },
-    "statut": { "enum": ["verifie", "non_verifie"] },
+    "statut": {
+      "enum": [
+        "verifie",
+        "non_verifie"
+      ]
+    },
     "date_verification": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "date"
     },
-    "signalements": { "type": "integer", "minimum": 0 }
+    "signalements": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "procedures": {
+      "type": "array",
+      "description": "Optionnel -- procédures d'installation/récupération pas à pas, lisibles par R36S Studio. Le détail humain est dans docs/<id>-*.md (champ guide).",
+      "items": {
+        "$ref": "#/$defs/procedure"
+      }
+    }
   },
   "$defs": {
     "optionEntries": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["nom", "description", "source_url"],
+        "required": [
+          "nom",
+          "description",
+          "source_url"
+        ],
         "additionalProperties": false,
         "properties": {
-          "nom": { "type": "string" },
-          "description": { "type": "string" },
-          "url": { "type": "string", "format": "uri" },
-          "licence": { "type": "string" },
+          "nom": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "licence": {
+            "type": "string"
+          },
           "licence_a_verifier": {
             "type": "boolean",
             "description": "Absent quand faux -- présent (true) seulement quand la licence exige une vérification humaine."
@@ -159,7 +283,244 @@
             "type": "boolean",
             "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée dans l'extrait citant cette option."
           },
-          "source_url": { "type": "string", "format": "uri" }
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "procedure": {
+      "type": "object",
+      "required": [
+        "id",
+        "titre",
+        "firmware",
+        "version",
+        "mode",
+        "efface_donnees",
+        "plateformes",
+        "telechargements",
+        "etapes",
+        "source_url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "titre": {
+          "type": "string"
+        },
+        "firmware": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "variantes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "nom",
+              "description"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nom": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "recommande": {
+                "type": "boolean"
+              },
+              "fichiers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "fichier_final": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "mode": {
+          "enum": [
+            "usb_download",
+            "carte_sd",
+            "adb",
+            "fastboot"
+          ],
+          "description": "Comment le firmware arrive sur la console."
+        },
+        "efface_donnees": {
+          "type": "boolean"
+        },
+        "plateformes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "windows",
+              "macos",
+              "linux"
+            ]
+          },
+          "description": "OS du PC sur lesquels la procédure officielle fonctionne."
+        },
+        "detection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "usb_vid_pid": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{4}:[0-9a-f]{4}$"
+              }
+            },
+            "description": {
+              "type": "string"
+            },
+            "a_verifier": {
+              "type": "boolean"
+            }
+          }
+        },
+        "prerequis": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "telechargements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "nom",
+              "url"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "nom": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "description": {
+                "type": "string"
+              },
+              "variante": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        },
+        "mot_de_passe_archive": {
+          "type": "object",
+          "required": [
+            "requis"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "requis": {
+              "type": "boolean"
+            },
+            "source": {
+              "type": "string"
+            },
+            "redistribuable": {
+              "type": "boolean"
+            }
+          }
+        },
+        "etapes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "ordre",
+              "action",
+              "automatisable",
+              "detail"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "ordre": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "action": {
+                "type": "string",
+                "description": "Code machine : telecharger, installer_pilotes, extraire_archive, retirer_sd, charger_pac, flasher, mode_download, attendre_premier_demarrage, configuration_initiale..."
+              },
+              "automatisable": {
+                "enum": [
+                  "oui",
+                  "partiel",
+                  "non"
+                ],
+                "description": "non = geste physique de l'utilisateur, le logiciel l'affiche et attend."
+              },
+              "detail": {
+                "type": "string"
+              },
+              "outil": {
+                "type": "string"
+              },
+              "duree_estimee_s": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "avertissement": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "depannage": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "symptome",
+              "solution"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "symptome": {
+                "type": "string"
+              },
+              "solution": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "guide": {
+          "type": "string",
+          "description": "Chemin du guide détaillé dans ce dépôt (docs/...)."
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
         }
       }
     }
