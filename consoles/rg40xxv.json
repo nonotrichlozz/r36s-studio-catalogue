@@ -4,70 +4,113 @@
     "nom": "RG40XXV",
     "fabricant": "Anbernic",
     "alias": [
-      "RG40XX V"
+      "RG40XX V",
+      "RG40XX-V",
+      "RG 40XXV"
     ]
   },
   "materiel": {
     "soc": "Allwinner H700",
-    "architecture": "inconnu"
+    "architecture": "ARM64"
   },
   "os": {
-    "type": "Linux"
+    "type": "Linux (firmware Anbernic d'origine)"
   },
   "options": {
     "frontend": [],
     "systeme_cfw": [
       {
+        "nom": "KNULLI",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. Image dédiée RG40XX V (fichier .7z en plusieurs parties à décompresser avant flash).",
+        "url": "https://knulli.org/devices/anbernic/rg40xx-v/",
+        "licence": "Batocera (inclut des composants à usage non commercial)",
+        "restriction_commerciale": true,
+        "source_url": "https://github.com/knulli-cfw/knulli-linux"
+      },
+      {
+        "nom": "ROCKNIX",
+        "description": "Successeur de JELOS. Image commune H700 : après flash, copier sun50i-h700-anbernic-rg40xx-v.dtb (dossier device_trees) à la racine de la partition ROCKNIX et le renommer dtb.img. Les versions récentes existent en DDR3 et DDR4 : vérifier le type de RAM de la console.",
+        "url": "https://rocknix.org/configure/h700-installation/",
+        "licence": "GPL-2.0",
+        "source_url": "https://github.com/ROCKNIX/distribution"
+      },
+      {
+        "nom": "muOS (MustardOS)",
+        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées.",
+        "url": "https://muos.dev/devices/anbernic/rg40xxv",
+        "licence": "GPL-3.0 + conditions d'utilisation (usage personnel uniquement)",
+        "restriction_commerciale": true,
+        "source_url": "https://github.com/MustardOS"
+      },
+      {
         "nom": "MinUI",
-        "description": "Minimalist operating system available for Anbernic handheld consoles.",
+        "description": "Interface minimaliste qui s'installe sur la 2e carte SD par-dessus le système d'origine (pas de flash). Support RG40XXV classé « Legacy » (dernière version dédiée : MinUI-20240831-0).",
+        "url": "https://github.com/shauninman/MinUI",
         "licence": "non_detectee",
-        "source_url": "https://github.com/fchavonet/bash-minui-rg40xxv-rgb_settings_tool",
         "licence_a_verifier": true,
-        "url": "https://github.com/shauninman/MinUI"
-      },
-      {
-        "nom": "Lixan",
-        "description": "Firmware anbernic rg40xxv",
-        "licence": "non_detectee",
-        "source_url": "https://github.com/nanirusba45-ops/Lixan",
-        "licence_a_verifier": true,
-        "url": "https://github.com/nanirusba45-ops/Lixan"
-      },
-      {
-        "nom": "rg40xxv-mainline",
-        "description": "Anbernic RG40XX V (Allwinner H700) on mainline Linux 7.2 instead of the vendor 4.9 BSP - kernel patches, launcher, services and a reproducible build",
-        "licence": "non_detectee",
-        "source_url": "https://github.com/x213212/rg40xxv-mainline",
-        "licence_a_verifier": true,
-        "url": "https://github.com/x213212/rg40xxv-mainline"
+        "source_url": "https://github.com/shauninman/MinUI"
       }
     ],
-    "firmware_origine": [],
+    "firmware_origine": [
+      {
+        "nom": "Firmware Anbernic officiel RG40XXV",
+        "description": "Images officielles (versions 16 Go et standard) sur la page de téléchargement Anbernic.",
+        "url": "https://win.anbernic.com/download_data/389.html",
+        "source_url": "https://win.anbernic.com/download_data/389.html"
+      }
+    ],
     "mises_a_jour": []
   },
+  "incompatibles": [
+    {
+      "nom": "ArkOS",
+      "raison": "Conçu pour les Rockchip RK3326/RK3566, pas pour l'Allwinner H700"
+    },
+    {
+      "nom": "dArkOS",
+      "raison": "Conçu pour les Rockchip RK3326, pas pour l'Allwinner H700"
+    }
+  ],
   "liens_officiels": [
     "https://anbernic.com/fr-fr/products/rg-40xxv"
   ],
   "licences": [
-    "MIT"
+    "GPL-2.0",
+    "GPL-3.0",
+    "Batocera (composants non commerciaux)"
   ],
+  "restriction_commerciale": true,
   "sources": [
     {
-      "url": "https://github.com/nanirusba45-ops/Lixan",
+      "url": "https://knulli.org/devices/anbernic/rg40xx-v/",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/knulli-cfw/knulli-linux",
       "type": "github"
     },
     {
-      "url": "https://github.com/fchavonet/bash-minui-rg40xxv-rgb_settings_tool",
+      "url": "https://rocknix.org/configure/h700-installation/",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/ROCKNIX/distribution",
       "type": "github"
     },
     {
-      "url": "https://github.com/x213212/rg40xxv-mainline",
+      "url": "https://muos.dev/devices/anbernic/rg40xxv",
+      "type": "web"
+    },
+    {
+      "url": "https://muos.dev/docs/tou",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/shauninman/MinUI",
       "type": "github"
     }
   ],
-  "recherche_web": false,
-  "sources_collectees": true,
-  "statut": "non_verifie",
-  "signalements": 0,
-  "date_verification": null
+  "statut": "verifie",
+  "date_verification": "2026-10-16",
+  "signalements": 0
 }

@@ -6,6 +6,16 @@
       "nom": "SF3000HD",
       "alias": [],
       "statut": "verifie"
+    },
+    {
+      "id": "rg40xxv",
+      "nom": "RG40XXV",
+      "alias": [
+        "RG40XX V",
+        "RG40XX-V",
+        "RG 40XXV"
+      ],
+      "statut": "verifie"
     }
   ]
 }
