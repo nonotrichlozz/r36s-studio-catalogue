@@ -159,7 +159,18 @@
             "type": "boolean",
             "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée dans l'extrait citant cette option."
           },
-          "source_url": { "type": "string", "format": "uri" }
+          "source_url": { "type": "string", "format": "uri" },
+          "telechargement": {
+            "type": "object",
+            "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). L'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Seules les images flashables (.img, .img.gz, .img.xz) hébergées sur github.com sont acceptées.",
+            "required": ["depot", "motif_fichier"],
+            "additionalProperties": false,
+            "properties": {
+              "depot": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+              "motif_fichier": { "type": "string", "minLength": 1 },
+              "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" }
+            }
+          }
         }
       }
     }

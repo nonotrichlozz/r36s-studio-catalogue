@@ -21,11 +21,16 @@
     "systeme_cfw": [
       {
         "nom": "KNULLI",
-        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. Version SCARAB (20260511) : image dédiée knulli-h700-rg40xx-v-scarab-20260511.img.gz, flashable directement.",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement).",
         "url": "https://github.com/knulli-cfw/knulli-linux/releases/tag/20260511",
         "licence": "Batocera (inclut des composants à usage non commercial)",
         "restriction_commerciale": true,
-        "source_url": "https://github.com/knulli-cfw/knulli-linux"
+        "source_url": "https://github.com/knulli-cfw/knulli-linux",
+        "telechargement": {
+          "depot": "knulli-cfw/knulli-linux",
+          "motif_fichier": "^knulli-h700-rg40xx-v-.*\\.img\\.gz$",
+          "url_directe": "https://github.com/knulli-cfw/knulli-linux/releases/download/20260511/knulli-h700-rg40xx-v-scarab-20260511.img.gz"
+        }
       },
       {
         "nom": "ROCKNIX",
