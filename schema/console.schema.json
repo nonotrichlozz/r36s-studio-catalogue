@@ -140,6 +140,32 @@
     "signalements": { "type": "integer", "minimum": 0 }
   },
   "$defs": {
+    "telechargement": {
+      "type": "object",
+      "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). L'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Seules les images flashables (.img, .img.gz, .img.xz) hébergées sur github.com sont acceptées.",
+      "required": ["depot", "motif_fichier"],
+      "additionalProperties": false,
+      "properties": {
+        "depot": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "motif_fichier": { "type": "string", "minLength": 1 },
+        "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
+        "apres_flash": {
+          "type": "array",
+          "description": "Copies faites par R36S Studio sur la carte juste après le flash (étapes manuelles demandées par le firmware, ex. dtb.img de ROCKNIX sur H700). Chemins relatifs à la partition, jamais '..'. Une seule entrée invalide retire le bouton d'installation.",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["partition", "copier", "vers"],
+            "additionalProperties": false,
+            "properties": {
+              "partition": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$" },
+              "copier": { "type": "string", "pattern": "^(?!(.*/)?\\.\\.?(/|$))[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" },
+              "vers": { "type": "string", "pattern": "^(?!(.*/)?\\.\\.?(/|$))[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" }
+            }
+          }
+        }
+      }
+    },
     "optionEntries": {
       "type": "array",
       "items": {
@@ -160,16 +186,10 @@
             "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée dans l'extrait citant cette option."
           },
           "source_url": { "type": "string", "format": "uri" },
-          "telechargement": {
-            "type": "object",
-            "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). L'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Seules les images flashables (.img, .img.gz, .img.xz) hébergées sur github.com sont acceptées.",
-            "required": ["depot", "motif_fichier"],
-            "additionalProperties": false,
-            "properties": {
-              "depot": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
-              "motif_fichier": { "type": "string", "minLength": 1 },
-              "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" }
-            }
+          "telechargement": { "$ref": "#/$defs/telechargement" },
+          "installation": {
+            "$ref": "#/$defs/telechargement",
+            "description": "Même contenu que telechargement, lu seulement par les versions de R36S Studio qui savent faire apres_flash (0.1.10 et suivantes) ; prioritaire sur telechargement. À utiliser dès qu'il y a des copies apres_flash : une version plus ancienne n'afficherait sinon un bouton qui laisse la console sans démarrer."
           }
         }
       }
