@@ -21,7 +21,7 @@
     "systeme_cfw": [
       {
         "nom": "KNULLI",
-        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement).",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement). Ne démarre pas sur les RG40XXV récentes (nouvel écran) : préférer muOS.",
         "url": "https://github.com/knulli-cfw/knulli-linux/releases/tag/20260511",
         "licence": "Batocera (inclut des composants à usage non commercial)",
         "restriction_commerciale": true,
@@ -34,7 +34,7 @@
       },
       {
         "nom": "ROCKNIX",
-        "description": "Successeur de JELOS. R36S Studio télécharge la dernière version H700 (variante DDR4 : la RG40XX V a de la mémoire LPDDR4) et pose automatiquement le fichier de la console (dtb.img) après le flash. Si l'écran reste noir au démarrage, signale-le : ce serait une console avec une autre mémoire.",
+        "description": "Successeur de JELOS. R36S Studio télécharge la dernière version H700 (variante DDR4 : la RG40XX V a de la mémoire LPDDR4) et pose automatiquement le fichier de la console (dtb.img) après le flash. Si l'écran reste noir au démarrage, signale-le : ce serait une console avec une autre mémoire. Ne démarre pas sur les RG40XXV récentes (nouvel écran) : préférer muOS.",
         "url": "https://github.com/ROCKNIX/distribution/releases/latest",
         "licence": "GPL-2.0",
         "source_url": "https://github.com/ROCKNIX/distribution",
@@ -53,11 +53,16 @@
       },
       {
         "nom": "muOS (MustardOS)",
-        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées.",
-        "url": "https://muos.dev/devices/anbernic/rg40xxv",
+        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées. Démarre sur les RG40XXV récentes (nouvel écran), où KNULLI et ROCKNIX restent bloqués. R36S Studio télécharge l'image RG40XX-V depuis le dossier MEGA officiel (4,4 Go, somme SHA-256 vérifiée) ; usage personnel uniquement.",
+        "url": "https://muos.dev/release/current/2601_1",
         "licence": "GPL-3.0 + conditions d'utilisation (usage personnel uniquement)",
         "restriction_commerciale": true,
-        "source_url": "https://github.com/MustardOS"
+        "source_url": "https://github.com/MustardOS",
+        "installation": {
+          "source": "mega",
+          "dossier": "https://mega.nz/folder/xrJVGJQS#ghWugbuUg2NBQFZlXKoJgA",
+          "motif_fichier": "^MustardOS_RG40XX-V_.*\\.img\\.gz$"
+        }
       },
       {
         "nom": "MinUI",

@@ -173,11 +173,20 @@
   "$defs": {
     "telechargement": {
       "type": "object",
-      "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). L'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Seules les images flashables (.img, .img.gz, .img.xz) hébergées sur github.com sont acceptées.",
-      "required": ["depot", "motif_fichier"],
+      "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). Source « github » (par défaut) : l'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Source « mega » (R36S Studio 0.1.14 et suivantes, sous la clé `installation` uniquement) : `dossier` est le lien public d'un dossier MEGA officiel ; le fichier est choisi par `motif_fichier`, sa SHA-256 lue dans le hash.txt du dossier s'il existe. Seules les images flashables (.img, .img.gz, .img.xz) sont acceptées.",
+      "required": ["motif_fichier"],
       "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "source": { "const": "mega" } }, "required": ["source"] },
+          "then": { "required": ["dossier"], "not": { "anyOf": [{ "required": ["depot"] }, { "required": ["url_directe"] }] } },
+          "else": { "required": ["depot"], "not": { "required": ["dossier"] } }
+        }
+      ],
       "properties": {
+        "source": { "type": "string", "enum": ["github", "mega"], "default": "github", "description": "Hébergement de l'image. Gofile n'est pas pris en charge (jeton calculé par un script obfusqué)." },
         "depot": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "dossier": { "type": "string", "format": "uri", "pattern": "^https://mega\\.nz/folder/[A-Za-z0-9_-]{8,}#[A-Za-z0-9_-]{22}$", "description": "Lien public du dossier MEGA officiel (source « mega »), clé comprise. Change à chaque version publiée." },
         "motif_fichier": { "type": "string", "minLength": 1 },
         "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
         "apres_flash": {
