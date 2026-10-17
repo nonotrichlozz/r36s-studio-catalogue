@@ -21,7 +21,7 @@
     "systeme_cfw": [
       {
         "nom": "KNULLI",
-        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement). Ne démarre pas sur les RG40XXV récentes (nouvel écran) : préférer muOS.",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement).",
         "url": "https://github.com/knulli-cfw/knulli-linux/releases/tag/20260511",
         "licence": "Batocera (inclut des composants à usage non commercial)",
         "restriction_commerciale": true,
@@ -53,7 +53,7 @@
       },
       {
         "nom": "muOS (MustardOS)",
-        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées. Démarre sur les RG40XXV récentes (nouvel écran), où KNULLI et ROCKNIX restent bloqués. R36S Studio télécharge l'image RG40XX-V depuis le dossier MEGA officiel (4,4 Go, somme SHA-256 vérifiée) ; usage personnel uniquement.",
+        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées. Démarre sur les RG40XXV récentes (nouvel écran), où ROCKNIX reste bloqué. R36S Studio télécharge l'image RG40XX-V depuis le dossier MEGA officiel (4,4 Go, somme SHA-256 vérifiée) ; usage personnel uniquement.",
         "url": "https://muos.dev/release/current/2601_1",
         "licence": "GPL-3.0 + conditions d'utilisation (usage personnel uniquement)",
         "restriction_commerciale": true,
