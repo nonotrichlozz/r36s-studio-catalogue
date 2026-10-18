@@ -29,7 +29,8 @@
         "telechargement": {
           "depot": "knulli-cfw/knulli-linux",
           "motif_fichier": "^knulli-h700-rg40xx-v-.*\\.img\\.gz$",
-          "url_directe": "https://github.com/knulli-cfw/knulli-linux/releases/download/20260511/knulli-h700-rg40xx-v-scarab-20260511.img.gz"
+          "url_directe": "https://github.com/knulli-cfw/knulli-linux/releases/download/20260511/knulli-h700-rg40xx-v-scarab-20260511.img.gz",
+          "consigne_premier_demarrage": "Branche la console sur secteur avant de l'allumer, même si la batterie est chargée à 100 % : KNULLI ne lance son installation que sur secteur. Au premier démarrage, appuie sur Power quand la console le demande, puis laisse-la terminer sans l'éteindre."
         }
       },
       {

@@ -189,6 +189,7 @@
         "dossier": { "type": "string", "format": "uri", "pattern": "^https://mega\\.nz/folder/[A-Za-z0-9_-]{8,}#[A-Za-z0-9_-]{22}$", "description": "Lien public du dossier MEGA officiel (source « mega »), clé comprise. Change à chaque version publiée." },
         "motif_fichier": { "type": "string", "minLength": 1 },
         "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
+        "consigne_premier_demarrage": { "type": "string", "minLength": 1, "maxLength": 400, "description": "Ce que l'utilisateur doit savoir AVANT de mettre la carte dans la console (texte court, en français, sans jargon) : affiché par R36S Studio dans la fenêtre Confirmation et à la fin du flash (0.1.15 et suivantes ; ignoré par les versions antérieures)." },
         "apres_flash": {
           "type": "array",
           "description": "Copies faites par R36S Studio sur la carte juste après le flash (étapes manuelles demandées par le firmware, ex. dtb.img de ROCKNIX sur H700). Chemins relatifs à la partition, jamais '..'. Une seule entrée invalide retire le bouton d'installation.",
