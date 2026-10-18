@@ -1,0 +1,100 @@
+{
+  "id": "rg300x",
+  "identite": {
+    "nom": "RG300X",
+    "fabricant": "Anbernic",
+    "alias": [
+      "RG 300X",
+      "RG-300X",
+      "RG300 X"
+    ]
+  },
+  "materiel": {
+    "soc": "Ingenic JZ4770",
+    "architecture": "MIPS",
+    "architecture_source_url": "https://github.com/eduardofilo/RG350_adam_image"
+  },
+  "os": {
+    "type": "OpenDingux (firmware Anbernic d'origine)"
+  },
+  "detection_sd": {
+    "signatures": [
+      {
+        "partition_index": 0,
+        "etiquette": null,
+        "systeme_fichiers": "FAT32",
+        "fichiers_reperes": [
+          "select_kernel.bat",
+          "rg300x/uzImage.bin"
+        ],
+        "description": "Carte INT avec l'image Adam (première partition FAT32 sans étiquette, d'après build.sh du projet -- pas relu sur une vraie carte)."
+      }
+    ]
+  },
+  "options": {
+    "frontend": [],
+    "systeme_cfw": [
+      {
+        "nom": "Adam (image RG350 d'eduardofilo)",
+        "description": "Compilation complète pour les consoles Ingenic JZ4770 (OpenDingux ODbeta, RetroArch, SimpleMenu, émulateurs autonomes), compatible RG300X. R36S Studio télécharge la dernière version (v2.1, projet archivé depuis janvier 2025) et pose automatiquement le noyau de la RG300X après le flash -- étape obligatoire, sans elle la console ne démarre pas. Carte d'au moins 4 Go, à insérer dans le lecteur marqué INT ; les jeux se mettent sur la carte EXT. L'espace libre de la carte n'est pas utilisé par le système (normal, sans conséquence).",
+        "url": "https://github.com/eduardofilo/RG350_adam_image/releases/tag/v2.1",
+        "licence": "non_detectee",
+        "licence_a_verifier": true,
+        "source_url": "https://github.com/eduardofilo/RG350_adam_image",
+        "installation": {
+          "depot": "eduardofilo/RG350_adam_image",
+          "motif_fichier": "^adam_v[0-9]+(\\.[0-9]+)*\\.img\\.xz$",
+          "url_directe": "https://github.com/eduardofilo/RG350_adam_image/releases/download/v2.1/adam_v2.1.img.xz",
+          "apres_flash": [
+            {
+              "partition": "BOOT",
+              "copier": "rg300x/uzImage.bin",
+              "vers": "uzImage.bin"
+            },
+            {
+              "partition": "BOOT",
+              "copier": "rg300x/uzImage.bin.sha1",
+              "vers": "uzImage.bin.sha1"
+            }
+          ]
+        }
+      }
+    ],
+    "firmware_origine": [],
+    "mises_a_jour": []
+  },
+  "incompatibles": [
+    {
+      "nom": "ArkOS",
+      "raison": "Conçu pour les Rockchip RK3326/RK3566 (ARM), pas pour l'Ingenic JZ4770 (MIPS)"
+    },
+    {
+      "nom": "ROCKNIX",
+      "raison": "Images ARM uniquement, aucune pour l'Ingenic JZ4770 (MIPS)"
+    },
+    {
+      "nom": "Adam, image PGv1 (adam_v2.1_PGv1.img.xz)",
+      "raison": "Réservée à la PocketGo2 v1 et à la GCW-Zero ; la RG300X utilise l'image adam_v2.1.img.xz"
+    }
+  ],
+  "licences": [
+    "non_detectee"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/eduardofilo/RG350_adam_image",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/eduardofilo/RG350_adam_image/wiki/En:-2.-Install-&-Upgrade",
+      "type": "github"
+    },
+    {
+      "url": "https://droix.net/blogs/anbetnic-rg300x-review/",
+      "type": "web"
+    }
+  ],
+  "statut": "verifie",
+  "date_verification": "2026-10-18",
+  "signalements": 0
+}

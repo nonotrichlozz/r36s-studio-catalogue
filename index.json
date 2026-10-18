@@ -16,6 +16,16 @@
         "RG 40XXV"
       ],
       "statut": "verifie"
+    },
+    {
+      "id": "rg300x",
+      "nom": "RG300X",
+      "alias": [
+        "RG 300X",
+        "RG-300X",
+        "RG300 X"
+      ],
+      "statut": "verifie"
     }
   ]
 }
