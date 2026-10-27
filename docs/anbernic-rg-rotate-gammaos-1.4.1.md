@@ -119,4 +119,12 @@ Ce qui peut être automatisé, et ce qui restera un geste humain :
 
 **Licence / usage commercial** : le dépôt GammaOS Next est sous Apache-2.0, mais les builds sont derrière un mot de passe Patreon (`licence_a_verifier: true`). Avant de vendre le logiciel ou de livrer des consoles clients sous GammaOS, vérifier avec l'auteur (TheGammaSqueeze) ce qui est autorisé. Le logiciel ne doit jamais embarquer le `.pac` ni le mot de passe.
 
+**Constaté lors de la première installation (27/10/2026, PC Windows 10 d'Arnaud)** :
+- Le mot de passe n'est plus publié sur Patreon : depuis octobre 2026 il est distribué **uniquement sur le Discord GammaOS**, aux membres ayant le rôle Supporter (compte Patreon/Ko-fi relié à Discord).
+- `UnisocTools_RG_ROTATE.zip` contient en réalité un dossier `UnisocTools_RG_VITA/` (mêmes outils) : `SPRD_Download_Tool/UpgradeDownload.exe` (R27.24.2301), **`CmdDloader.exe`** (flash en ligne de commande, piste n°1 pour l'automatisation), `UnisocDrivers/Win10/DPInst64.exe`, et `UnlockBootloader/` (contient `spd_dump.exe`). **`ResearchDownload.exe` est absent.**
+- WinRAR extrait sans problème l'archive fractionnée chiffrée (7-Zip pas obligatoire).
+- Le `.pac` Lite extrait fait **6,7 Go** ; UpgradeDownload l'affiche comme `RG_ROTATE_GAMMAOS_NEXT_LITE -- Version 1.4.1 -- 6365.291MB`, chargement ≈ 2 min.
+- `DPInst64.exe` tourne en administrateur : l'automatisation par clics est bloquée par Windows (UIPI), l'utilisateur doit cliquer lui-même → dans R36S Studio, prévoir une installation silencieuse (`DPInst64.exe /S /SE /SW`) lancée avec élévation.
+- Tailles des fichiers : lite .001 1,95 Go, .002 766 Mo ; full .001 1,95 Go, .002 871 Mo ; UnisocTools 55 Mo (SHA-256 publiés sur la page de release).
+
 **Statut de la fiche** : `non_verifie` — à passer à `verifie` une fois la manip réalisée sur la RG Rotate d'Arnaud (et le VID:PID confirmé).
