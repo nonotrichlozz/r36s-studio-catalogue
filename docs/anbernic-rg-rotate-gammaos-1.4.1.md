@@ -127,4 +127,12 @@ Ce qui peut être automatisé, et ce qui restera un geste humain :
 - `DPInst64.exe` tourne en administrateur : l'automatisation par clics est bloquée par Windows (UIPI), l'utilisateur doit cliquer lui-même → dans R36S Studio, prévoir une installation silencieuse (`DPInst64.exe /S /SE /SW`) lancée avec élévation.
 - Tailles des fichiers : lite .001 1,95 Go, .002 766 Mo ; full .001 1,95 Go, .002 871 Mo ; UnisocTools 55 Mo (SHA-256 publiés sur la page de release).
 
+**Automatisation dans R36S Studio (branche `rg-rotate-gammaos`, 27/10/2026, jamais lancée sur la console)** :
+- Flash par `CmdDloader.exe -pac <fichier.pac> -Version 2 -Port 0 -Timeout <ms> -Reset` (syntaxe lue dans le programme : `-Version 2` = mode UpgradeDownload, `-Port 0` = détection automatique). Repli : UpgradeDownload.exe avec le chemin du .pac copié.
+- Extraction avec le 7-Zip fourni dans les outils (`SPRD_Download_Tool/System/Tools/7zip/32/7z.exe`), mot de passe transmis sans ligne de commande.
+- Pilotes par `pnputil /add-driver …\Win10\Drivers\*.inf /install` (silencieux) plutôt que DPInst.
+- Visual C++ : les outils n'utilisent que les bibliothèques 2010 et 2015+, déjà fournies dans `System/Dependency/` ; à confirmer sur un Windows vierge avant de retirer ce prérequis.
+- Avant tout flash, l'en-tête du .pac est comparé à `pac_produit` (`ums512_1h10`), à la version et au `pac_nom` de la variante. `pac_produit` du firmware d'origine supposé identique (même carte), à confirmer.
+- Restauration de la partition Super : pas automatisée (ResearchDownload.exe absent, sélection de partitions trop risquée sans essai).
+
 **Statut de la fiche** : `non_verifie` — à passer à `verifie` une fois la manip réalisée sur la RG Rotate d'Arnaud (et le VID:PID confirmé).
