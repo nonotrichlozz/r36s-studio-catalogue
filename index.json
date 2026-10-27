@@ -26,6 +26,14 @@
         "RG300 X"
       ],
       "statut": "verifie"
+    },
+    {
+      "id": "anbernic-rg-rotate",
+      "nom": "RG Rotate",
+      "alias": [
+        "Anbernic RG Rotate"
+      ],
+      "statut": "non_verifie"
     }
   ]
 }
