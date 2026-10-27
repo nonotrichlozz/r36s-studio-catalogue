@@ -44,6 +44,16 @@
     ]
   },
   "incompatibles": [],
+  "symptomes": [
+    {
+      "symptome": "La console apparaît sur l'ordinateur (« SPRD U2S Diag ») mais le flash ne démarre pas : l'outil abandonne au bout de quelques secondes, rien n'est écrit.",
+      "causes_possibles": [
+        "Le câble a été branché en maintenant un autre bouton que Retour (au centre de la manette, console ouverte en coulissant) : la console ne répond pas à la synchronisation (journal : [SW2276]Check baud time out, répété), puis est lâchée après environ 4 s ([PS2262]User cancel)."
+      ],
+      "verification": "Débrancher, ouvrir la console en coulissant, maintenir le bouton Retour au centre de la manette et rebrancher le câble sans le relâcher. Dans SPRD_Download_Tool/Log/<date>/, le Trace.log d'un essai raté contient « SW2276 Check baud time out » ; avec le bon bouton, la ligne CheckBaudRate passe en « Success » et le flash démarre.",
+      "verifie_sur_materiel": true
+    }
+  ],
   "liens_officiels": [
     "https://github.com/TheGammaSqueeze/GammaOSNext/releases/tag/v1.4.1-ANBERNICRGROTATE",
     "https://github.com/TheGammaSqueeze/GammaOSNext"
@@ -106,8 +116,7 @@
         "usb_vid_pid": [
           "1782:4d00"
         ],
-        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 vu le 27/10/2026 sur le PC d'Arnaud (console exacte à confirmer) ; VID:PID sous Android inconnu.",
-        "a_verifier": true
+        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 confirmé le 27/10/2026 (port du flash réussi d'UpgradeDownload, registre des périphériques Windows). Sous GammaOS Next, la console apparaît en 1782:4003 (« GammaOS Next Lite », MTP + ADB)."
       },
       "prerequis": [
         "PC Windows 10/11",
@@ -304,8 +313,7 @@
         "usb_vid_pid": [
           "1782:4d00"
         ],
-        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 vu le 27/10/2026 sur le PC d'Arnaud (console exacte à confirmer) ; VID:PID sous Android inconnu.",
-        "a_verifier": true
+        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 confirmé le 27/10/2026 (port du flash réussi d'UpgradeDownload, registre des périphériques Windows). Sous GammaOS Next, la console apparaît en 1782:4003 (« GammaOS Next Lite », MTP + ADB)."
       },
       "prerequis": [
         "Symptôme précis : après une OTA, écran noir et Marche/Arrêt + Volume Bas ne relance rien",
@@ -412,8 +420,7 @@
         "usb_vid_pid": [
           "1782:4d00"
         ],
-        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 vu le 27/10/2026 sur le PC d'Arnaud (console exacte à confirmer) ; VID:PID sous Android inconnu.",
-        "a_verifier": true
+        "description": "Mode « Download » Unisoc/Spreadtrum : port COM « SPRD U2S Diag », pilote sprdvcom. 1782:4d00 confirmé le 27/10/2026 (port du flash réussi d'UpgradeDownload, registre des périphériques Windows). Sous GammaOS Next, la console apparaît en 1782:4003 (« GammaOS Next Lite », MTP + ADB)."
       },
       "telechargements": [
         {
@@ -467,7 +474,7 @@
       "source_url": "https://github.com/TheGammaSqueeze/GammaOSNext/releases/tag/v1.4.1-ANBERNICRGROTATE"
     }
   ],
-  "statut": "non_verifie",
-  "date_verification": null,
+  "statut": "verifie",
+  "date_verification": "2026-10-27",
   "signalements": 0
 }
