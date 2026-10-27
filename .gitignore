@@ -1,0 +1,14 @@
+# Dépôt public : aucun secret, aucune configuration locale ne doit y entrer.
+.env
+.env.*
+.dev.vars
+*.pem
+*.key
+
+# Outils locaux (validation : scripts/validate_catalogue.py)
+__pycache__/
+.venv/
+venv/
+*.log
+.DS_Store
+Thumbs.db

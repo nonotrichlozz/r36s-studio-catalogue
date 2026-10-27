@@ -1,0 +1,139 @@
+{
+  "id": "rg40xxv",
+  "identite": {
+    "nom": "RG40XXV",
+    "fabricant": "Anbernic",
+    "alias": [
+      "RG40XX V",
+      "RG40XX-V",
+      "RG 40XXV"
+    ]
+  },
+  "materiel": {
+    "soc": "Allwinner H700",
+    "architecture": "ARM64"
+  },
+  "os": {
+    "type": "Linux (firmware Anbernic d'origine)"
+  },
+  "options": {
+    "frontend": [],
+    "systeme_cfw": [
+      {
+        "nom": "KNULLI",
+        "description": "Firmware complet dérivé de Batocera, interface EmulationStation très soignée. R36S Studio télécharge automatiquement la dernière version pour la RG40XX V (image .img.gz flashable directement).",
+        "url": "https://github.com/knulli-cfw/knulli-linux/releases/tag/20260511",
+        "licence": "Batocera (inclut des composants à usage non commercial)",
+        "restriction_commerciale": true,
+        "source_url": "https://github.com/knulli-cfw/knulli-linux",
+        "telechargement": {
+          "depot": "knulli-cfw/knulli-linux",
+          "motif_fichier": "^knulli-h700-rg40xx-v-.*\\.img\\.gz$",
+          "url_directe": "https://github.com/knulli-cfw/knulli-linux/releases/download/20260511/knulli-h700-rg40xx-v-scarab-20260511.img.gz",
+          "consigne_premier_demarrage": "Branche la console sur secteur avant de l'allumer, même si la batterie est chargée à 100 % : KNULLI ne lance son installation que sur secteur. Au premier démarrage, appuie sur Power quand la console le demande, puis laisse-la terminer sans l'éteindre."
+        }
+      },
+      {
+        "nom": "ROCKNIX",
+        "description": "Successeur de JELOS. R36S Studio télécharge la dernière version H700 (variante DDR4 : la RG40XX V a de la mémoire LPDDR4) et pose automatiquement le fichier de la console (dtb.img) après le flash. Si l'écran reste noir au démarrage, signale-le : ce serait une console avec une autre mémoire. Ne démarre pas sur les RG40XXV récentes (nouvel écran) : préférer muOS.",
+        "url": "https://github.com/ROCKNIX/distribution/releases/latest",
+        "licence": "GPL-2.0",
+        "source_url": "https://github.com/ROCKNIX/distribution",
+        "installation": {
+          "depot": "ROCKNIX/distribution",
+          "motif_fichier": "^ROCKNIX-H700\\.aarch64-[0-9]+(-[a-z])?-DDR4\\.img\\.gz$",
+          "url_directe": "https://github.com/ROCKNIX/distribution/releases/download/20261001/ROCKNIX-H700.aarch64-20261001-DDR4.img.gz",
+          "apres_flash": [
+            {
+              "partition": "ROCKNIX",
+              "copier": "device_trees/sun50i-h700-anbernic-rg40xx-v.dtb",
+              "vers": "dtb.img"
+            }
+          ]
+        }
+      },
+      {
+        "nom": "muOS (MustardOS)",
+        "description": "Firmware léger et très abouti, pensé pour la famille Anbernic H700. Interface maison, sauvegarde/restauration intégrées. Démarre sur les RG40XXV récentes (nouvel écran), où ROCKNIX reste bloqué. R36S Studio télécharge l'image RG40XX-V depuis le dossier MEGA officiel (4,4 Go, somme SHA-256 vérifiée) ; usage personnel uniquement.",
+        "url": "https://muos.dev/release/current/2601_1",
+        "licence": "GPL-3.0 + conditions d'utilisation (usage personnel uniquement)",
+        "restriction_commerciale": true,
+        "source_url": "https://github.com/MustardOS",
+        "installation": {
+          "source": "mega",
+          "dossier": "https://mega.nz/folder/xrJVGJQS#ghWugbuUg2NBQFZlXKoJgA",
+          "motif_fichier": "^MustardOS_RG40XX-V_.*\\.img\\.gz$"
+        }
+      },
+      {
+        "nom": "MinUI",
+        "description": "Interface minimaliste qui s'installe sur la 2e carte SD par-dessus le système d'origine (pas de flash). Support RG40XXV classé « Legacy » (dernière version dédiée : MinUI-20240831-0).",
+        "url": "https://github.com/shauninman/MinUI",
+        "licence": "non_detectee",
+        "licence_a_verifier": true,
+        "source_url": "https://github.com/shauninman/MinUI"
+      }
+    ],
+    "firmware_origine": [
+      {
+        "nom": "Firmware Anbernic officiel RG40XXV",
+        "description": "Images officielles (versions 16 Go et standard) sur la page de téléchargement Anbernic.",
+        "url": "https://win.anbernic.com/download_data/389.html",
+        "source_url": "https://win.anbernic.com/download_data/389.html"
+      }
+    ],
+    "mises_a_jour": []
+  },
+  "incompatibles": [
+    {
+      "nom": "ArkOS",
+      "raison": "Conçu pour les Rockchip RK3326/RK3566, pas pour l'Allwinner H700"
+    },
+    {
+      "nom": "dArkOS",
+      "raison": "Conçu pour les Rockchip RK3326, pas pour l'Allwinner H700"
+    }
+  ],
+  "liens_officiels": [
+    "https://anbernic.com/fr-fr/products/rg-40xxv"
+  ],
+  "licences": [
+    "GPL-2.0",
+    "GPL-3.0",
+    "Batocera (composants non commerciaux)"
+  ],
+  "restriction_commerciale": true,
+  "sources": [
+    {
+      "url": "https://knulli.org/devices/anbernic/rg40xx-v/",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/knulli-cfw/knulli-linux",
+      "type": "github"
+    },
+    {
+      "url": "https://rocknix.org/configure/h700-installation/",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/ROCKNIX/distribution",
+      "type": "github"
+    },
+    {
+      "url": "https://muos.dev/devices/anbernic/rg40xxv",
+      "type": "web"
+    },
+    {
+      "url": "https://muos.dev/docs/tou",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/shauninman/MinUI",
+      "type": "github"
+    }
+  ],
+  "statut": "verifie",
+  "date_verification": "2026-10-17",
+  "signalements": 0
+}
