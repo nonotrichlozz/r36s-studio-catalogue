@@ -302,6 +302,10 @@
               },
               "fichier_final": {
                 "type": "string"
+              },
+              "pac_nom": {
+                "type": "string",
+                "description": "Nom affiché dans l'en-tête du .pac final (ex. RG_ROTATE_GAMMAOS_NEXT_LITE). R36S Studio refuse de flasher un .pac dont le nom diffère."
               }
             }
           }
@@ -317,6 +321,10 @@
         },
         "efface_donnees": {
           "type": "boolean"
+        },
+        "pac_produit": {
+          "type": "string",
+          "description": "Nom de produit de l'en-tête du .pac (ex. ums512_1h10), vérifié avec la version avant tout flash. Sans lui, R36S Studio ne propose pas de flash automatique."
         },
         "plateformes": {
           "type": "array",
