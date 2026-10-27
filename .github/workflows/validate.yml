@@ -1,0 +1,40 @@
+name: Validation du catalogue
+
+# Chaque pull request (y compris celles ouvertes par le Worker) et chaque push
+# sur main : toutes les fiches de consoles/ contre schema/, et index.json
+# contre consoles/. Une erreur fait échouer le job ; pour que ça bloque
+# vraiment la fusion, la règle de protection de main doit exiger ce check
+# (voir CONTRIBUTING.md et le réglage GitHub correspondant).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# `pull_request` (jamais `pull_request_target`) : le code d'une PR s'exécute
+# sans accès aux secrets ni droit d'écriture sur le dépôt.
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Fiches et index
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dépendance (version figée)
+        run: python -m pip install --disable-pip-version-check "jsonschema==4.26.0"
+
+      - name: Valider consoles/ et index.json
+        run: python scripts/validate_catalogue.py

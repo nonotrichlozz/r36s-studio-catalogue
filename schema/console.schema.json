@@ -4,15 +4,7 @@
   "title": "Fiche console R36S Studio",
   "description": "Schéma d'une fiche consoles/<id>.json -- premier brouillon, voir r36s-studio-cloud/README.md, \"Décisions techniques\", point 1, pour le contexte et les décisions non encore formalisées ici.",
   "type": "object",
-  "required": [
-    "id",
-    "identite",
-    "materiel",
-    "os",
-    "options",
-    "statut",
-    "signalements"
-  ],
+  "required": ["id", "identite", "materiel", "os", "options", "statut", "signalements"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -22,66 +14,34 @@
     },
     "identite": {
       "type": "object",
-      "required": [
-        "nom",
-        "fabricant",
-        "alias"
-      ],
+      "required": ["nom", "fabricant", "alias"],
       "additionalProperties": false,
       "properties": {
-        "nom": {
-          "type": "string",
-          "minLength": 1
-        },
-        "fabricant": {
-          "type": "string",
-          "minLength": 1
-        },
+        "nom": { "type": "string", "minLength": 1 },
+        "fabricant": { "type": "string", "minLength": 1 },
         "alias": {
           "type": "array",
-          "items": {
-            "type": "string"
-          },
+          "items": { "type": "string" },
           "description": "Jamais utilisés pour la correspondance catalogue tant que statut != \"verifie\"."
         }
       }
     },
     "materiel": {
       "type": "object",
-      "required": [
-        "soc",
-        "architecture"
-      ],
+      "required": ["soc", "architecture"],
       "additionalProperties": false,
       "properties": {
-        "soc": {
-          "type": "string"
-        },
-        "architecture": {
-          "enum": [
-            "MIPS",
-            "ARM64",
-            "ARM32",
-            "x86",
-            "inconnu"
-          ]
-        },
-        "architecture_source_url": {
-          "type": "string",
-          "format": "uri"
-        }
+        "soc": { "type": "string" },
+        "architecture": { "enum": ["MIPS", "ARM64", "ARM32", "x86", "inconnu"] },
+        "architecture_source_url": { "type": "string", "format": "uri" }
       }
     },
     "os": {
       "type": "object",
-      "required": [
-        "type"
-      ],
+      "required": ["type"],
       "additionalProperties": false,
       "properties": {
-        "type": {
-          "type": "string"
-        }
+        "type": { "type": "string" }
       }
     },
     "detection_sd": {
@@ -93,32 +53,18 @@
           "description": "Plusieurs entrées = alternatives (OU) -- ex. carte d'origine vs firmware déjà installé -- jamais un ET.",
           "items": {
             "type": "object",
-            "required": [
-              "partition_index",
-              "systeme_fichiers",
-              "fichiers_reperes"
-            ],
+            "required": ["partition_index", "systeme_fichiers", "fichiers_reperes"],
             "additionalProperties": false,
             "properties": {
-              "partition_index": {
-                "type": "integer",
-                "minimum": 0
-              },
+              "partition_index": { "type": "integer", "minimum": 0 },
               "etiquette": {
-                "type": [
-                  "string",
-                  "null"
-                ],
+                "type": ["string", "null"],
                 "description": "Souvent absente sur les vraies cartes, voir r36s-studio/CLAUDE.md §4.4."
               },
-              "systeme_fichiers": {
-                "type": "string"
-              },
+              "systeme_fichiers": { "type": "string" },
               "fichiers_reperes": {
                 "type": "array",
-                "items": {
-                  "type": "string"
-                },
+                "items": { "type": "string" },
                 "minItems": 1
               },
               "description": {
@@ -132,26 +78,13 @@
     },
     "options": {
       "type": "object",
-      "required": [
-        "frontend",
-        "systeme_cfw",
-        "firmware_origine",
-        "mises_a_jour"
-      ],
+      "required": ["frontend", "systeme_cfw", "firmware_origine", "mises_a_jour"],
       "additionalProperties": false,
       "properties": {
-        "frontend": {
-          "$ref": "#/$defs/optionEntries"
-        },
-        "systeme_cfw": {
-          "$ref": "#/$defs/optionEntries"
-        },
-        "firmware_origine": {
-          "$ref": "#/$defs/optionEntries"
-        },
-        "mises_a_jour": {
-          "$ref": "#/$defs/optionEntries"
-        }
+        "frontend": { "$ref": "#/$defs/optionEntries" },
+        "systeme_cfw": { "$ref": "#/$defs/optionEntries" },
+        "firmware_origine": { "$ref": "#/$defs/optionEntries" },
+        "mises_a_jour": { "$ref": "#/$defs/optionEntries" }
       }
     },
     "incompatibles": {
@@ -159,35 +92,52 @@
       "description": "Firmwares/CFW confirmés incompatibles (pas seulement \"non testés\") -- toujours vérifié.",
       "items": {
         "type": "object",
-        "required": [
-          "nom",
-          "raison"
-        ],
+        "required": ["nom", "raison"],
         "additionalProperties": false,
         "properties": {
-          "nom": {
+          "nom": { "type": "string", "minLength": 1 },
+          "raison": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "symptomes": {
+      "type": "array",
+      "description": "Dépannage : ce que l'utilisateur voit à l'écran (pas la configuration correcte), ses causes possibles et comment trancher. Optionnel -- jamais produit par la recherche IA (absent de SCHEMA_FIELDS côté Worker), seulement sur une fiche relue à la main.",
+      "items": {
+        "type": "object",
+        "required": ["symptome", "causes_possibles", "verification", "verifie_sur_materiel"],
+        "additionalProperties": false,
+        "properties": {
+          "symptome": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "Ce qu'on voit, dans les mots de l'utilisateur -- jamais le nom de la cause."
           },
-          "raison": {
+          "causes_possibles": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "minItems": 1,
+            "description": "De la plus probable à la moins probable. Quand verifie_sur_materiel est vrai, la cause confirmée sur la console est toujours la première ; les suivantes restent des pistes plausibles et documentées."
+          },
+          "verification": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "description": "Comment savoir laquelle des causes est la bonne, sur la carte ou la console."
+          },
+          "verifie_sur_materiel": {
+            "type": "boolean",
+            "description": "Vrai seulement si le symptôme ET la cause retenue ont été constatés sur une vraie console -- faux pour une cause déduite de la documentation ou jamais confirmée après correction."
           }
         }
       }
     },
     "liens_officiels": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uri"
-      }
+      "items": { "type": "string", "format": "uri" }
     },
     "licences": {
       "type": "array",
-      "items": {
-        "type": "string"
-      }
+      "items": { "type": "string" }
     },
     "restriction_commerciale": {
       "type": "boolean",
@@ -197,23 +147,11 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "url",
-          "type"
-        ],
+        "required": ["url", "type"],
         "additionalProperties": false,
         "properties": {
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "type": {
-            "enum": [
-              "web",
-              "handhelds_wiki",
-              "github"
-            ]
-          }
+          "url": { "type": "string", "format": "uri" },
+          "type": { "enum": ["web", "handhelds_wiki", "github"] }
         }
       }
     },
@@ -225,23 +163,12 @@
       "type": "boolean",
       "description": "Vrai uniquement en mode collecte de sources -- absent sinon."
     },
-    "statut": {
-      "enum": [
-        "verifie",
-        "non_verifie"
-      ]
-    },
+    "statut": { "enum": ["verifie", "non_verifie"] },
     "date_verification": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "date"
     },
-    "signalements": {
-      "type": "integer",
-      "minimum": 0
-    },
+    "signalements": { "type": "integer", "minimum": 0 },
     "procedures": {
       "type": "array",
       "description": "Optionnel -- procédures d'installation/récupération pas à pas, lisibles par R36S Studio. Le détail humain est dans docs/<id>-*.md (champ guide).",
@@ -251,30 +178,53 @@
     }
   },
   "$defs": {
+    "telechargement": {
+      "type": "object",
+      "description": "Téléchargement direct par R36S Studio (bouton « Télécharger et installer », fiches vérifiées uniquement). Source « github » (par défaut) : l'app cherche d'abord dans la DERNIÈRE release GitHub de `depot` le fichier dont le nom correspond à `motif_fichier` (expression régulière), puis se replie sur `url_directe`. Source « mega » (R36S Studio 0.1.14 et suivantes, sous la clé `installation` uniquement) : `dossier` est le lien public d'un dossier MEGA officiel ; le fichier est choisi par `motif_fichier`, sa SHA-256 lue dans le hash.txt du dossier s'il existe. Seules les images flashables (.img, .img.gz, .img.xz) sont acceptées.",
+      "required": ["motif_fichier"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "source": { "const": "mega" } }, "required": ["source"] },
+          "then": { "required": ["dossier"], "not": { "anyOf": [{ "required": ["depot"] }, { "required": ["url_directe"] }] } },
+          "else": { "required": ["depot"], "not": { "required": ["dossier"] } }
+        }
+      ],
+      "properties": {
+        "source": { "type": "string", "enum": ["github", "mega"], "default": "github", "description": "Hébergement de l'image. Gofile n'est pas pris en charge (jeton calculé par un script obfusqué)." },
+        "depot": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "dossier": { "type": "string", "format": "uri", "pattern": "^https://mega\\.nz/folder/[A-Za-z0-9_-]{8,}#[A-Za-z0-9_-]{22}$", "description": "Lien public du dossier MEGA officiel (source « mega »), clé comprise. Change à chaque version publiée." },
+        "motif_fichier": { "type": "string", "minLength": 1 },
+        "url_directe": { "type": "string", "format": "uri", "pattern": "^https://github\\.com/" },
+        "consigne_premier_demarrage": { "type": "string", "minLength": 1, "maxLength": 400, "description": "Ce que l'utilisateur doit savoir AVANT de mettre la carte dans la console (texte court, en français, sans jargon) : affiché par R36S Studio dans la fenêtre Confirmation et à la fin du flash (0.1.15 et suivantes ; ignoré par les versions antérieures)." },
+        "apres_flash": {
+          "type": "array",
+          "description": "Copies faites par R36S Studio sur la carte juste après le flash (étapes manuelles demandées par le firmware, ex. dtb.img de ROCKNIX sur H700). Chemins relatifs à la partition, jamais '..'. Une seule entrée invalide retire le bouton d'installation.",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["partition", "copier", "vers"],
+            "additionalProperties": false,
+            "properties": {
+              "partition": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$" },
+              "copier": { "type": "string", "pattern": "^(?!(.*/)?\\.\\.?(/|$))[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" },
+              "vers": { "type": "string", "pattern": "^(?!(.*/)?\\.\\.?(/|$))[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" }
+            }
+          }
+        }
+      }
+    },
     "optionEntries": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": [
-          "nom",
-          "description",
-          "source_url"
-        ],
+        "required": ["nom", "description", "source_url"],
         "additionalProperties": false,
         "properties": {
-          "nom": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "licence": {
-            "type": "string"
-          },
+          "nom": { "type": "string" },
+          "description": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "licence": { "type": "string" },
           "licence_a_verifier": {
             "type": "boolean",
             "description": "Absent quand faux -- présent (true) seulement quand la licence exige une vérification humaine."
@@ -283,9 +233,11 @@
             "type": "boolean",
             "description": "Absent quand faux -- présent (true) seulement quand une mention non commerciale a été détectée dans l'extrait citant cette option."
           },
-          "source_url": {
-            "type": "string",
-            "format": "uri"
+          "source_url": { "type": "string", "format": "uri" },
+          "telechargement": { "$ref": "#/$defs/telechargement" },
+          "installation": {
+            "$ref": "#/$defs/telechargement",
+            "description": "Même contenu que telechargement, lu seulement par les versions de R36S Studio qui savent faire apres_flash (0.1.10 et suivantes) ; prioritaire sur telechargement. À utiliser dès qu'il y a des copies apres_flash : une version plus ancienne n'afficherait sinon un bouton qui laisse la console sans démarrer."
           }
         }
       }

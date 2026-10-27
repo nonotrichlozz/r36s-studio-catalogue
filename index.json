@@ -1,10 +1,30 @@
 {
-  "version": "0.2.0",
+  "version": "0.1.0",
   "consoles": [
     {
       "id": "sf3000hd",
       "nom": "SF3000HD",
       "alias": [],
+      "statut": "verifie"
+    },
+    {
+      "id": "rg40xxv",
+      "nom": "RG40XXV",
+      "alias": [
+        "RG40XX V",
+        "RG40XX-V",
+        "RG 40XXV"
+      ],
+      "statut": "verifie"
+    },
+    {
+      "id": "rg300x",
+      "nom": "RG300X",
+      "alias": [
+        "RG 300X",
+        "RG-300X",
+        "RG300 X"
+      ],
       "statut": "verifie"
     },
     {

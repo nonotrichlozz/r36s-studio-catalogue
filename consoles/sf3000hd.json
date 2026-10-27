@@ -17,7 +17,7 @@
       {
         "partition_index": 0,
         "etiquette": null,
-        "systeme_fichiers": "fat32",
+        "systeme_fichiers": "exfat",
         "fichiers_reperes": [
           "cubegm",
           "roms"
@@ -100,6 +100,104 @@
       "raison": "Nécessite Linux ARM avec SDL2/GLES, absents sur cette console (OS propriétaire MIPS)"
     }
   ],
+  "symptomes": [
+    {
+      "symptome": "Au démarrage de la console, le logo s'affiche puis l'écran reste noir ; TreeFrog UI n'apparaît jamais.",
+      "causes_possibles": [
+        "Le dossier MD à la racine de la carte (pas celui dans roms/) ne contient plus dummy.md et filelist.csv : le menu d'origine s'en sert pour lancer TreeFrog UI. Cas réel : ces deux fichiers avaient été déplacés dans roms/MD avec les jeux Mega Drive."
+      ],
+      "verification": "Sur l'ordinateur, vérifier que MD/dummy.md et MD/filelist.csv existent à la racine de la carte. Aucun journal n'est écrit dans ce cas (log.txt et tfhijack.log restent inchangés) : leur absence de nouvelle ligne est elle-même un indice.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Le jeu apparaît dans la liste et se lance, mais l'écran reste noir (parfois retour au menu, ou TreeFrog UI qui se ferme).",
+      "causes_possibles": [
+        "Le jeu est dans une archive .7z : l'émulateur ne sait ouvrir que le .zip et reçoit l'archive au lieu du jeu.",
+        "Le jeu est dans le dossier d'un autre système que le sien."
+      ],
+      "verification": "Regarder l'extension du fichier sur la carte : un .7z doit être converti en .zip (compression standard) ou décompressé. Confirmation possible avec les journaux (créer un dossier logs/ vide et un fichier log.txt à la racine) : dans logs/cores.log, une taille chargée égale à celle du .7z et non à celle du jeu.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Les jeux Neo Geo apparaissent dans l'entrée Neo Geo, mais aucun ne démarre.",
+      "causes_possibles": [
+        "Les jeux sont au format .neo (un seul fichier .neo dans chaque .zip) : le dossier neogeo n'accepte que des romsets FB Alpha 2012 (plusieurs fichiers par .zip). Ces jeux vont dans le dossier geolith.",
+        "Le BIOS neogeo.zip manque (à mettre, sans le décompresser, dans cubegm/bios/ -- la documentation indique aussi roms/neogeo/).",
+        "Romset d'une autre version que FB Alpha 2012 (MAME, FBNeo récent)."
+      ],
+      "verification": "Ouvrir un .zip du dossier neogeo sur l'ordinateur : un seul fichier .neo à l'intérieur = format geolith. Avec les journaux activés, logs/cores.log affiche « [FBA] Cannot load this game » pour chaque tentative.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Des jeux .neo copiés dans le dossier geolith n'apparaissent pas, ou ne se lancent pas.",
+      "causes_possibles": [
+        "Le .neo est resté dans son .zip : geolith lit le fichier .neo extrait, pas l'archive.",
+        "Le BIOS Neo Geo manque dans cubegm/bios/."
+      ],
+      "verification": "Sur la carte, les fichiers du dossier geolith doivent se terminer par .neo, pas par .zip. Test fait : le même jeu extrait en .neo fonctionne, sa version .zip non.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Un dossier de jeux est bien sur la carte, mais aucune entrée ne correspond dans le menu de la console.",
+      "causes_possibles": [
+        "Le nom du dossier n'existe pas pour TreeFrog UI (cas réel : gbc, ignoré -- les mêmes jeux déplacés dans gb s'affichent).",
+        "Le nom est bon mais pas la casse : majuscules et minuscules comptent et choisissent même l'émulateur (SMS est reconnu, sms n'est pas documenté).",
+        "Le dossier ne contient aucun fichier de jeu et « Masquer les dossiers vides » est actif."
+      ],
+      "verification": "Comparer le nom exact du dossier, lettre par lettre, avec docs/cores.md sur la carte. L'index des dossiers retenus par la console est dans frogui/.cache (fichier contenant /mnt/sdcard/roms suivi des noms de dossiers) : un dossier absent de cette liste est ignoré.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Les jeux Game Boy Color n'apparaissent nulle part dans le menu.",
+      "causes_possibles": [
+        "Ils sont dans un dossier gbc : ce nom n'est pas reconnu par TreeFrog UI. Les jeux Game Boy Color vont dans gb, avec les jeux Game Boy (même émulateur, gambatte)."
+      ],
+      "verification": "Déplacer les .zip (ou .gbc) et leurs images Imgs/ de roms/gbc vers roms/gb, en renommant ceux qui portent déjà le même nom qu'un jeu Game Boy (une version Game Boy et une version Color d'un même titre sont deux jeux différents), puis vider le cache (frogui/.cache).",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Plusieurs entrées du menu pour la même console (par exemple trois entrées Mega Drive).",
+      "causes_possibles": [
+        "Chaque alias de dossier reconnu crée sa propre entrée : sega, MD, SMS (émulateur picodrive) et gpgx (émulateur Genesis Plus GX) sont quatre dossiers distincts pour la console.",
+        "Avec « Noms de systèmes lisibles », ces entrées peuvent porter le même nom affiché."
+      ],
+      "verification": "Lister les dossiers de roms/ : regrouper les jeux d'une console dans un seul de ces dossiers et laisser les autres vides.",
+      "verifie_sur_materiel": true
+    },
+    {
+      "symptome": "Après avoir ajouté, déplacé ou renommé des jeux sur l'ordinateur, la console affiche encore l'ancienne liste.",
+      "causes_possibles": [
+        "Le cache de fichiers (option File Cache) garde l'ancienne liste.",
+        "La console a été éteinte ou la carte retirée juste après une reconstruction du cache : les fichiers de frogui/.cache sont créés mais restent vides (0 octet)."
+      ],
+      "verification": "Supprimer le dossier frogui/.cache sur l'ordinateur (les dossiers .cache_old* peuvent rester), ou lancer Réglages → Rebuild File Cache sur la console, puis quitter TreeFrog UI par son menu et attendre quelques secondes avant d'éteindre. Fichiers de frogui/.cache à 0 octet sur l'ordinateur = cache jamais écrit jusqu'au bout.",
+      "verifie_sur_materiel": false
+    },
+    {
+      "symptome": "Une entrée du menu affiche des initiales à la place de l'icône de sa console.",
+      "causes_possibles": [
+        "Aucune icône ne porte exactement le nom du dossier : l'icône est cherchée comme <nom du dossier>.png dans frogui/system-icons/ et dans le pack d'icônes choisi. Les packs fournis ont sega.png et gpgx.png, mais ni MD.png ni SMS.png."
+      ],
+      "verification": "Chercher frogui/system-icons/<nom exact du dossier>.png et frogui/icon-packs/<pack choisi>/<nom exact du dossier>.png. Correction tentée (copie de sega.png en MD.png et SMS.png), résultat non confirmé sur la console.",
+      "verifie_sur_materiel": false
+    },
+    {
+      "symptome": "Un jeu s'affiche sans jaquette alors que l'image est bien dans le dossier Imgs.",
+      "causes_possibles": [
+        "Le nom de l'image ne correspond pas exactement au nom du jeu sans son extension (espaces, ponctuation, suffixe ajouté lors d'un renommage)."
+      ],
+      "verification": "Comparer les deux noms caractère par caractère : Imgs/<nom du jeu sans extension>.png. Écarts constatés sur l'ordinateur ; affichage de la jaquette après correction non confirmé sur la console.",
+      "verifie_sur_materiel": false
+    },
+    {
+      "symptome": "Des « jeux » dont le nom commence par [BIOS] apparaissent dans la liste et ne démarrent pas, ou affichent n'importe quoi.",
+      "causes_possibles": [
+        "Ce sont des BIOS (fichiers système d'une console ou d'un accessoire), pas des jeux : ils n'ont rien à faire dans roms/. Attention, certains fichiers [BIOS] de Master System sont de vrais jeux intégrés à la console (Hang On, Alex Kidd…)."
+      ],
+      "verification": "Déplacer les vrais BIOS hors de roms/ (vers cubegm/bios/). Ils n'y seront pas utilisés tels quels : les émulateurs attendent des noms exacts, non compressés (bios_CD_E.bin, gba_bios.bin…).",
+      "verifie_sur_materiel": true
+    }
+  ],
   "liens_officiels": [],
   "licences": [
     "CC-BY-NC-SA-4.0"
@@ -116,6 +214,6 @@
     }
   ],
   "statut": "verifie",
-  "date_verification": "2026-09-17",
+  "date_verification": "2026-09-28",
   "signalements": 0
 }
