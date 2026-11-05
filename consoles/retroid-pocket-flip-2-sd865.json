@@ -1,0 +1,62 @@
+{
+  "id": "retroid-pocket-flip-2-sd865",
+  "identite": {
+    "nom": "Retroid Pocket Flip 2 (Snapdragon 865)",
+    "fabricant": "Retroid",
+    "alias": [
+      "Retroid Pocket Flip 2 SD865",
+      "RP Flip 2 SD865"
+    ]
+  },
+  "materiel": {
+    "soc": "Qualcomm Snapdragon 865 (GPU Adreno 650)",
+    "architecture": "ARM64",
+    "architecture_source_url": "https://www.androidcentral.com/gaming/retroid-pocket-flip-2-launch"
+  },
+  "os": {
+    "type": "Android (firmware d'origine Retroid)"
+  },
+  "options": {
+    "frontend": [],
+    "systeme_cfw": [],
+    "firmware_origine": [],
+    "mises_a_jour": [],
+    "emulateurs": [
+      {
+        "nom": "Vita3K+",
+        "systemes": [
+          "PS Vita"
+        ],
+        "description": "Version dérivée de Vita3K : meilleure compatibilité avec les jeux et corrections d'affichage. L'émulateur original appartient à l'équipe Vita3K.",
+        "url": "https://github.com/nckstwrt/Vita3K-Plus/releases",
+        "licence": "GPL-2.0",
+        "licence_a_verifier": true,
+        "pilote_gpu": "Turnip (GPU Adreno) : recommandé par le développeur pour une compatibilité optimale.",
+        "avertissements": [
+          "Ne concerne que la version Snapdragon 865 : sur la version Dimensity 1100 (GPU Mali), le développeur prévient que certaines choses ne marcheront pas.",
+          "En cas de blocage ou de gel : le développeur conseille d'activer la planification précise des threads dans les réglages."
+        ],
+        "verifie_sur_materiel": false,
+        "source_url": "https://github.com/nckstwrt/Vita3K-Plus"
+      }
+    ]
+  },
+  "incompatibles": [],
+  "liens_officiels": [
+    "https://github.com/nckstwrt/Vita3K-Plus"
+  ],
+  "licences": [],
+  "sources": [
+    {
+      "url": "https://github.com/nckstwrt/Vita3K-Plus",
+      "type": "github"
+    },
+    {
+      "url": "https://www.androidcentral.com/gaming/retroid-pocket-flip-2-launch",
+      "type": "web"
+    }
+  ],
+  "statut": "verifie",
+  "date_verification": "2026-11-05",
+  "signalements": 0
+}
