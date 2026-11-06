@@ -34,6 +34,15 @@
         "Anbernic RG Rotate"
       ],
       "statut": "verifie"
+    },
+    {
+      "id": "retroid-pocket-flip-2-sd865",
+      "nom": "Retroid Pocket Flip 2 (Snapdragon 865)",
+      "alias": [
+        "Retroid Pocket Flip 2 SD865",
+        "RP Flip 2 SD865"
+      ],
+      "statut": "verifie"
     }
   ]
 }

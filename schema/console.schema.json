@@ -84,7 +84,8 @@
         "frontend": { "$ref": "#/$defs/optionEntries" },
         "systeme_cfw": { "$ref": "#/$defs/optionEntries" },
         "firmware_origine": { "$ref": "#/$defs/optionEntries" },
-        "mises_a_jour": { "$ref": "#/$defs/optionEntries" }
+        "mises_a_jour": { "$ref": "#/$defs/optionEntries" },
+        "emulateurs": { "$ref": "#/$defs/emulateurEntries" }
       }
     },
     "incompatibles": {
@@ -211,6 +212,28 @@
               "vers": { "type": "string", "pattern": "^(?!(.*/)?\\.\\.?(/|$))[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$" }
             }
           }
+        }
+      }
+    },
+    "emulateurEntries": {
+      "type": "array",
+      "description": "Optionnel -- émulateurs conseillés pour une console Android (section « Émulateurs »). Jamais de lien Play Store : url pointe vers la page officielle du projet (GitHub ou site).",
+      "items": {
+        "type": "object",
+        "required": ["nom", "systemes", "description", "source_url", "verifie_sur_materiel"],
+        "additionalProperties": false,
+        "properties": {
+          "nom": { "type": "string", "minLength": 1 },
+          "systemes": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "description": "Systèmes émulés, ex. « PS Vita »." },
+          "description": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri", "description": "Page de téléchargement officielle." },
+          "licence": { "type": "string" },
+          "licence_a_verifier": { "type": "boolean", "description": "Absent quand faux." },
+          "pilote_gpu": { "type": "string", "description": "Pilote graphique conseillé sur cette console (ex. Turnip sur GPU Adreno)." },
+          "avertissements": { "type": "array", "items": { "type": "string", "minLength": 1 }, "description": "À savoir avant d'installer, ou en cas de souci." },
+          "verifie_sur_materiel": { "type": "boolean", "description": "Vrai seulement si l'émulateur a été installé et un jeu lancé sur cette console précise." },
+          "date_verification": { "type": ["string", "null"], "format": "date" },
+          "source_url": { "type": "string", "format": "uri" }
         }
       }
     },

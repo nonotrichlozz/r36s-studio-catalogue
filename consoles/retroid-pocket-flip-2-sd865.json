@@ -1,0 +1,84 @@
+{
+  "id": "retroid-pocket-flip-2-sd865",
+  "identite": {
+    "nom": "Retroid Pocket Flip 2 (Snapdragon 865)",
+    "fabricant": "Retroid",
+    "alias": [
+      "Retroid Pocket Flip 2 SD865",
+      "RP Flip 2 SD865"
+    ]
+  },
+  "materiel": {
+    "soc": "Qualcomm Snapdragon 865 (GPU Adreno 650)",
+    "architecture": "ARM64",
+    "architecture_source_url": "https://www.androidcentral.com/gaming/retroid-pocket-flip-2-launch"
+  },
+  "os": {
+    "type": "Android (firmware d'origine Retroid)"
+  },
+  "options": {
+    "frontend": [],
+    "systeme_cfw": [],
+    "firmware_origine": [],
+    "mises_a_jour": [],
+    "emulateurs": [
+      {
+        "nom": "Vita3K+",
+        "systemes": [
+          "PS Vita"
+        ],
+        "description": "Version dérivée de Vita3K : meilleure compatibilité avec les jeux et corrections d'affichage. L'émulateur original appartient à l'équipe Vita3K.",
+        "url": "https://github.com/nckstwrt/Vita3K-Plus/releases",
+        "licence": "GPL-2.0",
+        "licence_a_verifier": true,
+        "pilote_gpu": "Turnip (GPU Adreno) : recommandé par le développeur pour une compatibilité optimale.",
+        "avertissements": [
+          "Ne concerne que la version Snapdragon 865 : sur la version Dimensity 1100 (GPU Mali), le développeur prévient que certaines choses ne marcheront pas.",
+          "En cas de blocage ou de gel : le développeur conseille d'activer la planification précise des threads dans les réglages."
+        ],
+        "verifie_sur_materiel": false,
+        "source_url": "https://github.com/nckstwrt/Vita3K-Plus"
+      },
+      {
+        "nom": "Xendroid+",
+        "systemes": [
+          "Xbox 360"
+        ],
+        "description": "Émulateur Xbox 360 pour Android, suite du projet XenDroid, basé sur Xenia. Interface pensée pour la manette, réglages par jeu appliqués automatiquement, gestionnaire de pilotes Adreno/Turnip intégré. Expérimental.",
+        "url": "https://github.com/phforner0/Xendroid-Plus/releases",
+        "licence": "AGPL-3.0",
+        "pilote_gpu": "Turnip (GPU Adreno), installable depuis le gestionnaire de pilotes intégré.",
+        "avertissements": [
+          "Console en dessous de la cible : le développeur vise les Adreno 7xx/8xx et recommande un Snapdragon 8 Gen 2 ou plus récent. Sur l'Adreno 650 de la Flip 2, s'attendre à des jeux lents ou qui ne démarrent pas.",
+          "Si un jeu plante à cause de la profondeur (écran noir ou crash au rendu) : le développeur cite l'option depth_float24_convert_in_pixel_shader = true, constatée nécessaire sur Retroid Pocket 5 (même GPU Adreno 650).",
+          "Android 10 minimum, arm64-v8a. Jeux à fournir soi-même (ISO, ZAR ou GOD dumpés de ses propres disques)."
+        ],
+        "verifie_sur_materiel": false,
+        "source_url": "https://github.com/phforner0/Xendroid-Plus"
+      }
+    ]
+  },
+  "incompatibles": [],
+  "liens_officiels": [
+    "https://github.com/nckstwrt/Vita3K-Plus",
+    "https://github.com/phforner0/Xendroid-Plus"
+  ],
+  "licences": [],
+  "sources": [
+    {
+      "url": "https://github.com/nckstwrt/Vita3K-Plus",
+      "type": "github"
+    },
+    {
+      "url": "https://www.androidcentral.com/gaming/retroid-pocket-flip-2-launch",
+      "type": "web"
+    },
+    {
+      "url": "https://github.com/phforner0/Xendroid-Plus",
+      "type": "github"
+    }
+  ],
+  "statut": "verifie",
+  "date_verification": "2026-11-05",
+  "signalements": 0
+}
