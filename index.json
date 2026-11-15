@@ -34,6 +34,15 @@
         "Anbernic RG Rotate"
       ],
       "statut": "verifie"
+    },
+    {
+      "id": "retroid-pocket-flip-2",
+      "nom": "Retroid Pocket Flip 2",
+      "alias": [
+        "RP Flip 2",
+        "Retroid Flip 2"
+      ],
+      "statut": "non_verifie"
     }
   ]
 }

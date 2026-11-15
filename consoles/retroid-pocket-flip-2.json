@@ -1,0 +1,144 @@
+{
+  "id": "retroid-pocket-flip-2",
+  "identite": {
+    "nom": "Retroid Pocket Flip 2",
+    "fabricant": "Retroid",
+    "alias": [
+      "RP Flip 2",
+      "Retroid Flip 2"
+    ]
+  },
+  "materiel": {
+    "soc": "Qualcomm Snapdragon 865 (il existe aussi une variante MediaTek Dimensity 1100)",
+    "architecture": "ARM64",
+    "architecture_source_url": "https://droix.net/product/retroid-pocket-flip-2/"
+  },
+  "os": {
+    "type": "Android 13"
+  },
+  "options": {
+    "frontend": [
+      {
+        "nom": "Recompa",
+        "description": "Lanceur Android qui regroupe des portages natifs de jeux (recompilations, décompilations, ports source) : il installe chaque portage depuis le dépôt de son auteur. Aucun jeu n'est fourni : chaque portage demande les fichiers d'un jeu que l'on possède. Android 8.0 ou plus récent.",
+        "url": "https://recompa.app/",
+        "licence": "GPL-3.0",
+        "licence_a_verifier": true,
+        "source_url": "https://github.com/kalasyan/recompa"
+      }
+    ],
+    "systeme_cfw": [],
+    "firmware_origine": [],
+    "mises_a_jour": []
+  },
+  "incompatibles": [],
+  "symptomes": [],
+  "liens_officiels": [
+    "https://recompa.app/",
+    "https://github.com/kalasyan/recompa"
+  ],
+  "licences": [
+    "GPL-3.0"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/kalasyan/recompa",
+      "type": "github"
+    },
+    {
+      "url": "https://recompa.app/",
+      "type": "web"
+    },
+    {
+      "url": "https://droix.net/product/retroid-pocket-flip-2/",
+      "type": "web"
+    },
+    {
+      "url": "https://liliputing.com/retroid-pocket-flip2-is-a-faster-handheld-game-console-with-upgraded-controllers/",
+      "type": "web"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "recompa-installation",
+      "titre": "Installer Recompa (portages natifs de jeux)",
+      "firmware": "Recompa",
+      "version": "dernière version publiée",
+      "mode": "adb",
+      "efface_donnees": false,
+      "plateformes": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "prerequis": [
+        "Console allumée, sous Android 8.0 ou plus récent",
+        "Débogage USB activé sur la console",
+        "Câble USB qui transmet les données",
+        "Connexion internet sur l'ordinateur"
+      ],
+      "telechargements": [
+        {
+          "nom": "recompa.apk",
+          "url": "https://github.com/kalasyan/recompa/releases/latest/download/recompa.apk",
+          "description": "Dernière version publiée par l'auteur. Pas d'empreinte fixe : le lien suit chaque nouvelle version. R36S Studio note l'empreinte du fichier installé dans son journal.",
+          "paquet": "io.github.kalasyan.recompa"
+        }
+      ],
+      "etapes": [
+        {
+          "ordre": 1,
+          "action": "activer_debogage_usb",
+          "automatisable": "non",
+          "detail": "Sur la console : Paramètres > À propos > appuyer 7 fois sur « Numéro de build », puis Paramètres > Système > Options pour les développeurs > activer « Débogage USB »."
+        },
+        {
+          "ordre": 2,
+          "action": "brancher_console",
+          "automatisable": "non",
+          "detail": "Brancher la console allumée à l'ordinateur, puis accepter la demande « Autoriser le débogage USB » affichée sur son écran."
+        },
+        {
+          "ordre": 3,
+          "action": "telecharger",
+          "automatisable": "oui",
+          "detail": "Télécharger recompa.apk depuis la page du projet."
+        },
+        {
+          "ordre": 4,
+          "action": "installer_apk",
+          "automatisable": "oui",
+          "detail": "Installer Recompa sur la console par le câble USB. Une version déjà installée est mise à jour, ses réglages sont conservés.",
+          "outil": "adb install -r"
+        },
+        {
+          "ordre": 5,
+          "action": "ouvrir_application",
+          "automatisable": "non",
+          "detail": "Sur la console, ouvrir Recompa depuis la liste des applications et accepter l'autorisation qu'il demande pour installer des portages."
+        },
+        {
+          "ordre": 6,
+          "action": "configuration_initiale",
+          "automatisable": "non",
+          "detail": "Dans Recompa : choisir un portage (filtre « Compatible »), l'installer, puis lui indiquer les fichiers du jeu que l'on possède.",
+          "avertissement": "Les portages les plus lourds (Xbox 360) n'ont pas été essayés sur cette console."
+        }
+      ],
+      "depannage": [
+        {
+          "symptome": "La console n'est pas reconnue par l'ordinateur",
+          "solution": "Vérifier que le débogage USB est activé, changer de câble ou de port USB, puis accepter la demande d'autorisation sur l'écran de la console."
+        },
+        {
+          "symptome": "La console refuse l'installation",
+          "solution": "Regarder l'écran de la console : Android peut demander de confirmer l'installation par USB (Options pour les développeurs > « Installer via USB » sur certains modèles)."
+        }
+      ],
+      "source_url": "https://github.com/kalasyan/recompa"
+    }
+  ],
+  "statut": "non_verifie",
+  "date_verification": null,
+  "signalements": 0
+}

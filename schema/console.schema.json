@@ -388,6 +388,11 @@
               "sha256": {
                 "type": "string",
                 "pattern": "^[0-9a-f]{64}$"
+              },
+              "paquet": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "Identifiant du paquet Android d'un APK (procédure en mode adb). R36S Studio s'en sert pour vérifier que l'application est bien installée ; sans lui, il ne propose pas l'installation."
               }
             }
           }
@@ -429,7 +434,7 @@
               },
               "action": {
                 "type": "string",
-                "description": "Code machine : telecharger, installer_pilotes, extraire_archive, retirer_sd, charger_pac, flasher, mode_download, attendre_premier_demarrage, configuration_initiale..."
+                "description": "Code machine : telecharger, installer_pilotes, extraire_archive, retirer_sd, charger_pac, flasher, mode_download, attendre_premier_demarrage, configuration_initiale... Mode adb : activer_debogage_usb, brancher_console, telecharger, installer_apk, ouvrir_application, configuration_initiale."
               },
               "automatisable": {
                 "enum": [
