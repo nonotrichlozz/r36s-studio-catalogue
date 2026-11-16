@@ -1,0 +1,72 @@
+{
+  "id": "retroid-pocket-flip2",
+  "identite": {
+    "nom": "Retroid Pocket Flip 2",
+    "fabricant": "Retroid Pocket",
+    "alias": [
+      "Retroid Pocket Flip2",
+      "Flip 2",
+      "Flip2",
+      "Retroid Pocket Flip2 SM8250"
+    ]
+  },
+  "materiel": {
+    "soc": "SM8250",
+    "architecture": "inconnu"
+  },
+  "os": {
+    "type": "Android"
+  },
+  "options": {
+    "frontend": [
+      {
+        "nom": "Flip2LayoutSwitcher",
+        "description": "Per-app Retro/Xbox controller layout switching for Retroid Pocket Flip 2 (unofficial)",
+        "licence": "MIT",
+        "source_url": "https://github.com/wizzle-fbx/Flip2LayoutSwitcher",
+        "licence_a_verifier": true,
+        "url": "https://github.com/wizzle-fbx/Flip2LayoutSwitcher"
+      }
+    ],
+    "systeme_cfw": [
+      {
+        "nom": "ROCKNIX-GTK",
+        "description": "ROCKNIX-GTK distro for experimental PS3 emulation on Retroid Pocket Flip2 SM8250 and similar",
+        "licence": "GPL-2.0",
+        "source_url": "https://github.com/mercurious/etk",
+        "licence_a_verifier": true,
+        "url": "https://github.com/mercurious/rocknix-gtk"
+      }
+    ],
+    "firmware_origine": [
+      {
+        "nom": "Firmware d'origine",
+        "description": "firmware with build number ending in 20250501",
+        "licence": "MIT",
+        "source_url": "https://github.com/wizzle-fbx/Flip2LayoutSwitcher",
+        "licence_a_verifier": true
+      }
+    ],
+    "mises_a_jour": []
+  },
+  "liens_officiels": [],
+  "licences": [
+    "GPL-2.0",
+    "MIT"
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/mercurious/etk",
+      "type": "github"
+    },
+    {
+      "url": "https://github.com/wizzle-fbx/Flip2LayoutSwitcher",
+      "type": "github"
+    }
+  ],
+  "recherche_web": false,
+  "sources_collectees": true,
+  "statut": "non_verifie",
+  "signalements": 0,
+  "date_verification": null
+}
