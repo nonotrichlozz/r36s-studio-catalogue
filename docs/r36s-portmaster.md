@@ -47,7 +47,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 
 - **Technique :** réimplémentation open source du moteur d'origine, présentée comme validée dans PortMaster.
 - **Fichiers requis :** dossiers de données de la version PC Special Edition.
-- **Portage :** catalogue PortMaster, https://portmaster.games/games/ (rechercher « Need For Speed II SE »). L'adresse sans barre finale redirige vers celle-ci.
+- **Portage :** fiche « Wiki de Need For Speed II SE - PortMaster » : https://share.google/2cyuw8VBU0No4TQYd (lien de partage Google fourni par Arnaud ; liste des jeux : https://portmaster.games/games/).
 - **Capture :** à ajouter.
 
 ## 5. Need for Speed: Porsche Unleashed
