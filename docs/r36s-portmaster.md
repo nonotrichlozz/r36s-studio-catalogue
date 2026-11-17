@@ -17,6 +17,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 | 5 | [Need for Speed: Porsche Unleashed](#5-need-for-speed-porsche-unleashed) | Moteur Open-Unleashed | Version PC | R36S non confirmée |
 | 6 | [Resident Evil 4](#6-resident-evil-4-mobile--platinum) | Wrapper mobile/iOS | IPA ou APK/OBB | README cite la R36S (bêta) |
 | 7 | [Zelda: The Wind Waker](#7-zelda-the-wind-waker) | Recompilation GameCube | ISO GameCube (US) | Non lu (Discord) |
+| 8 | [GTA: Vice City](#8-gta-vice-city) | Portage PC | Fichiers du jeu PC | **Confirmé sur R36S** |
 
 ---
 
@@ -69,6 +70,14 @@ portage demande les fichiers d'un jeu que l'on possède.
 - **Technique :** recompilation statique du code GameCube vers ARM64 (sans émulateur Dolphin).
 - **Fichiers requis :** ISO GameCube version US.
 - **Portage :** distribué par l'équipe NextOS via leur Discord (invitation sur https://github.com/NextOs-Ports/nextos-universal-ports, salon *GameCube port*).
+- **Capture :** à ajouter.
+
+## 8. GTA: Vice City
+
+- **Technique :** portage de la version PC (via PortMaster).
+- **Fichiers requis :** les fichiers de ta copie PC du jeu.
+- **Portage :** lien exact du dépôt non noté pour l'instant ; à ajouter (chercher « Vice City » dans le catalogue PortMaster, https://portmaster.games/games/).
+- **Statut :** **fonctionne sur R36S** (constaté par Arnaud, 2026-11-17).
 - **Capture :** à ajouter.
 
 ---
