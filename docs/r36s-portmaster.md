@@ -6,7 +6,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 > **Statut : non vérifié, sauf mention contraire.** Liste établie le 2026-11-17
 > à partir d'une réponse de Gemini, puis recoupée avec les pages GitHub (les dépôts
 > existent ; ce que chaque README annonce est noté ci-dessous). Seul **Halo** a été
-> constaté fonctionnel sur une vraie R36S (par Arnaud, 2026-11-17).
+> constaté fonctionnel sur une vraie R36S (par Aretro, 2026-11-17).
 
 | # | Jeu | Technique | Fichiers à fournir | Statut |
 |---|-----|-----------|--------------------|--------|
@@ -26,7 +26,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 - **Technique :** décompilation native ARM64, sans émulation.
 - **Fichiers requis :** une image ISO Xbox originale du jeu.
 - **Portage :** https://github.com/kirklandsig/halo-ce-anbernic-rg35xx — à récupérer via l'archive zip PortMaster.
-- **Statut :** **fonctionne sur R36S** (constaté par Arnaud). Attention : le README du dépôt vise les Anbernic à puce H700 sous Knulli et ne cite pas la R36S ; noter ici le build/zip exact utilisé sur la R36S.
+- **Statut :** **fonctionne sur R36S** (constaté par Aretro). Attention : le README du dépôt vise les Anbernic à puce H700 sous Knulli et ne cite pas la R36S ; noter ici le build/zip exact utilisé sur la R36S.
 - **Capture :** à ajouter (idéalement une photo de ta propre R36S).
 
 ## 2. Need for Speed: Underground 2
@@ -47,7 +47,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 
 - **Technique :** réimplémentation open source du moteur d'origine, présentée comme validée dans PortMaster.
 - **Fichiers requis :** dossiers de données de la version PC Special Edition.
-- **Portage :** fiche « Wiki de Need For Speed II SE - PortMaster » : https://share.google/2cyuw8VBU0No4TQYd (lien de partage Google fourni par Arnaud ; liste des jeux : https://portmaster.games/games/).
+- **Portage :** fiche « Wiki de Need For Speed II SE - PortMaster » : https://share.google/2cyuw8VBU0No4TQYd (lien de partage Google fourni par Aretro ; liste des jeux : https://portmaster.games/games/).
 - **Capture :** à ajouter.
 
 ## 5. Need for Speed: Porsche Unleashed
@@ -77,7 +77,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 - **Technique :** portage de la version PC (via PortMaster).
 - **Fichiers requis :** les fichiers de ta copie PC du jeu.
 - **Portage :** officiel PortMaster, fiche « Grand Theft Auto Vice City », par Orson (page « Grand Theft Auto Vice City - Wiki PortMaster » : https://share.google/U7YbiGY3DSJi3qAvp — lien de partage Google, mené vers la fiche ; liste des jeux : https://portmaster.games/games/). La fiche précise : « Vous devez fournir les fichiers du jeu. »
-- **Statut :** **fonctionne sur R36S** (constaté par Arnaud, 2026-11-17).
+- **Statut :** **fonctionne sur R36S** (constaté par Aretro, 2026-11-17).
 - **Capture :** à ajouter.
 
 ---
