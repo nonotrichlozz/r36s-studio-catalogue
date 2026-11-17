@@ -21,7 +21,7 @@
 
 | Jeu | Type de portage | Lien du dépôt / source |
 |-----|-----------------|------------------------|
-| Halo: Combat Evolved | Décompilation ARM64 (ISO Xbox requise) | https://github.com/kirklandsig/halo-ce-anbernic-rg35xx (compatible R36S sous dArkOS/ArkOS via le zip PortMaster) |
+| Halo: Combat Evolved | Décompilation ARM64 (ISO Xbox requise) | https://github.com/kirklandsig/halo-ce-anbernic-rg35xx (compatible R36S sous dArkOS/ArkOS via le zip PortMaster) — **Halo tourne sur R36S : constaté par Arnaud sur sa console (2026-11-17).** Attention : le README de ce dépôt vise les consoles Anbernic H700 sous Knulli et ne cite pas la R36S ; préciser quel build/zip a été utilisé sur la R36S. |
 | Need for Speed II SE | Officiel PortMaster (fichiers PC) | https://portmaster.games/games (rechercher « Need For Speed II SE ») |
 | Need for Speed: Underground 2 | Recompilation statique PC (v1.0 ou v1.2) | https://github.com/manuelpllull/nfsu2-recompiled-r36s |
 | Need for Speed: Most Wanted | Wrapper Android (APK + OBB requis) | https://github.com/EapRules/nfsmw-r36s |
