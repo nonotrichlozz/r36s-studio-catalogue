@@ -76,7 +76,7 @@ portage demande les fichiers d'un jeu que l'on possède.
 
 - **Technique :** portage de la version PC (via PortMaster).
 - **Fichiers requis :** les fichiers de ta copie PC du jeu.
-- **Portage :** officiel PortMaster, section « jeux » du site : https://portmaster.games/games/ (chercher « Vice City »).
+- **Portage :** officiel PortMaster, fiche « Grand Theft Auto Vice City », par Orson (page du site, section « jeux » : https://portmaster.games/games/ — adresse exacte de la fiche à ajouter). La fiche précise : « Vous devez fournir les fichiers du jeu. »
 - **Statut :** **fonctionne sur R36S** (constaté par Arnaud, 2026-11-17).
 - **Capture :** à ajouter.
 
