@@ -17,8 +17,8 @@
       {
         "nom": "PortMaster (catalogue officiel)",
         "description": "Répertoire officiel de portages de jeux pour consoles Linux ARM, plus de 1 500 portages validés (ex. Need for Speed II SE). Les portages demandent les fichiers PC d'un jeu que l'on possède. Liste lue dans une réponse Gemini, non testée sur la console.",
-        "url": "https://portmaster.games/games",
-        "source_url": "https://portmaster.games/games"
+        "url": "https://portmaster.games/games/",
+        "source_url": "https://portmaster.games/games/"
       },
       {
         "nom": "NextOS Universal Ports",
@@ -43,7 +43,7 @@
   ],
   "sources": [
     {
-      "url": "https://portmaster.games/games",
+      "url": "https://portmaster.games/games/",
       "type": "web"
     },
     {
