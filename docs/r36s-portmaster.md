@@ -21,13 +21,13 @@
 
 | Jeu | Type de portage | Lien du dépôt / source |
 |-----|-----------------|------------------------|
-| Halo (Combat Evolved) | Décompilation ARM64 (ISO Xbox requise) | https://github.com/kirklandsig/halo-ce-anbernic-rg35xx (indiqué compatible R36S sous dArkOS/ArkOS via le zip PortMaster) |
-| Need for Speed II SE | Officiel PortMaster (fichiers PC) | https://portmaster.games/games (chercher « Need For Speed II SE ») |
-| Need for Speed II SE | Recompilation statique PC (v1.0 ou v1.2) | https://github.com/manuelpllull/nfsu2-recompiled-r36s |
-| Need for Speed Most Wanted | Wrapper Android (APK + OBB requis) | https://github.com/EapRules/nfsmw-r36s |
-| Need for Speed 5 | Recompilation / moteur Open-Unleashed (PC) | https://github.com/rzrbld/ReNFS5 |
-| Resident Evil 4 Platinum | Portage mobile/iOS (bêta R36S) | https://github.com/NextOs-Ports/nextos-universal-ports ou https://github.com/davizerascript/re4-r36s-arkos-beta |
-| Jeux GameCube (nom non précisé dans la source) | Recompilation GameCube (version US) | Publiée par l'équipe NextOS (lien Discord sur https://github.com/NextOs-Ports/nextos-universal-ports, salon *GameCube port*) |
+| Halo: Combat Evolved | Décompilation ARM64 (ISO Xbox requise) | https://github.com/kirklandsig/halo-ce-anbernic-rg35xx (compatible R36S sous dArkOS/ArkOS via le zip PortMaster) |
+| Need for Speed II SE | Officiel PortMaster (fichiers PC) | https://portmaster.games/games (rechercher « Need For Speed II SE ») |
+| Need for Speed: Underground 2 | Recompilation statique PC (v1.0 ou v1.2) | https://github.com/manuelpllull/nfsu2-recompiled-r36s |
+| Need for Speed: Most Wanted | Wrapper Android (APK + OBB requis) | https://github.com/EapRules/nfsmw-r36s |
+| Need for Speed: Porsche Unleashed | Recompilation / moteur Open-Unleashed (PC) | https://github.com/rzrbld/ReNFS5 |
+| Resident Evil 4 | Portage Mobile/iOS Platinum (bêta R36S) | https://github.com/NextOs-Ports/nextos-universal-ports ou https://github.com/davizerascript/re4-r36s-arkos-beta |
+| Zelda: The Wind Waker | Recompilation GameCube (version US) | Publié par l'équipe NextOS (lien Discord sur https://github.com/NextOs-Ports/nextos-universal-ports, salon *GameCube port*) |
 
 Remarque : pas de recompilation native de Tekken sur PortMaster pour R36S à ce
 jour ; la série passe par l'émulation PS1 (Tekken 1 à 3) ou PSP/PPSSPP
